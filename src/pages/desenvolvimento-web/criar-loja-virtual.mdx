@@ -1,0 +1,40 @@
+import { graphql } from "gatsby"
+import ProductPage from "../../templates/productPage"
+
+
+<ProductPage {...props} />
+
+
+
+export const query = graphql`
+	{
+    contentfulProduct(slug: {eq: "criar-loja-virtual"}) {
+      title
+      slug
+      description {
+        description
+      }
+      image {
+        fluid(quality: 80, maxHeight: 300) {
+          ...GatsbyContentfulFluid_withWebp_noBase64
+        }
+        title
+      }
+      benefits
+      features {
+        title
+        description
+      }
+      serviceCategory {
+        slug
+        product {
+          title
+          description {
+            description
+          }
+          slug
+        }
+      }
+    }
+  }
+`

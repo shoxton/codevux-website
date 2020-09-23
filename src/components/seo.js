@@ -3,6 +3,7 @@
  *  Gatsby's useStaticQuery React hook
  *
  * See: https://www.gatsbyjs.org/docs/use-static-query/
+ * https://www.gatsbyjs.com/docs/add-seo-component/
  */
 
 import React from "react"
@@ -73,7 +74,7 @@ function SEO({ description, lang, meta, title }) {
 }
 
 SEO.defaultProps = {
-  lang: `en`,
+  lang: `pt-BR`,
   meta: [],
   description: ``,
 }

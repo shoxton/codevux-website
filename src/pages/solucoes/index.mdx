@@ -1,0 +1,21 @@
+import { Box, SimpleGrid, Stack } from '@chakra-ui/core'
+import Intro from '../../components/intro'
+import Layout from '../../components/layout'
+import Service, { ServiceList } from '../../components/service'
+import Container from '../../gatsby-plugin-chakra-ui/components/container'
+
+
+<Intro
+	headline="Serviços e soluções"
+	intro="Combinando inovação e tecnologia para impulsionar o crescimento do seu negócio"
+	btnText="Fale conosco"
+	to="/contato"
+	variant="outline"
+	variantColor="gray.700"
+	_hover={{bg: "gray.700", color: "white", textDecoration: "none"}}
+/>
+<Box>
+	<Stack spacing={[4, 32]} as={Container} pb={16} mt={-16}>
+		<ServiceList  />
+	</Stack>
+</Box>

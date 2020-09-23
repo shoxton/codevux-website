@@ -1,0 +1,20 @@
+import { Link } from "gatsby"
+import Image from "../components/image"
+import SEO from "../components/seo"
+import Hero from "../components/hero"
+import Service, { ServiceList } from "../components/service"
+import Container from "../gatsby-plugin-chakra-ui/components/container"
+import { Box, Divider, Heading, Stack, Text } from "@chakra-ui/core"
+import { Section, SectionHeading } from "../components/utils"
+
+<SEO title="" />
+<Hero />
+<Container>
+	<Section>
+		<SectionHeading
+			heading="Serviços e soluções"
+			text="Nosso objetivo é agregar valor"
+		/>
+		<ServiceList id="index-services" />
+	</Section>
+</Container>

@@ -1,0 +1,48 @@
+import { graphql } from 'gatsby'
+import { Box, Button } from '@chakra-ui/core'
+import { Section } from '../../components/utils'
+import Intro from '../../components/intro'
+import Container from "../../gatsby-plugin-chakra-ui/components/container"
+import Link from "../../gatsby-plugin-chakra-ui/components/link"
+import { ProductList } from '../../components/product'
+
+
+
+<Intro
+	headline={props.data.contentfulService.title}
+	intro={props.data.contentfulService.description}
+	btnText="Desenvolver projeto"
+	to="/contato"
+	variant="outline"
+	variantColor="teal"
+	_hover={{bg: 'teal.500', color: 'white'}}
+/>
+<Container>
+	<Section pt="0!important" >
+		<ProductList service={props.data.contentfulService} />
+	</Section>
+</Container>
+
+export const query = graphql`
+	{
+		contentfulService {
+			title
+			slug
+			description
+			product {
+				title
+				description {
+					description
+				}
+				slug
+			}
+			image {
+				fluid(quality: 80, maxHeight: 300) {
+					...GatsbyContentfulFluid_withWebp_noBase64
+				}
+				title
+			}
+		}
+	}
+`
+

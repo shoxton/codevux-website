@@ -5,14 +5,28 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React from "react"
+import React, { useRef, useState, useEffect } from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
 import "./layout.css"
+import Footer from "./footer"
+import Nav from "./nav"
+import { Box } from "@chakra-ui/core"
 
-const Layout = ({ children }) => {
+const Layout = ({ location, children }) => {
+
+	// calculates nav height to define body offset
+	const navRef = useRef(null)
+	const [navHeight, setNavHeight] = useState()
+
+	const getNavHeight = () => navRef.current.getBoundingClientRect().height
+
+	useEffect(() => {
+		setNavHeight(getNavHeight())
+	}, [navRef])
+
   const data = useStaticQuery(graphql`
     query SiteTitleQuery {
       site {
@@ -25,21 +39,14 @@ const Layout = ({ children }) => {
 
   return (
     <>
-      <Header siteTitle={data.site.siteMetadata.title} />
-      <div
-        style={{
-          margin: `0 auto`,
-          maxWidth: 960,
-          padding: `0 1.0875rem 1.45rem`,
-        }}
-      >
-        <main>{children}</main>
-        <footer>
-          © {new Date().getFullYear()}, Built with
-          {` `}
-          <a href="https://www.gatsbyjs.org">Gatsby</a>
-        </footer>
-      </div>
+			<Nav childRef={navRef} location={location} />
+			<Box
+				as="main"
+				pt={`${navHeight}px`}
+			>
+				{children}
+			</Box>
+			<Footer />
     </>
   )
 }
