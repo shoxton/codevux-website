@@ -72,7 +72,13 @@ export const NavMenu = ({children, ...props}) => (
 		{...props}
 	>
 		<Link to="/solucoes">Serviços e soluções</Link>
-		<Button variant="solid" variantColor="teal">
+		<Button
+			to="/contato"
+			as={Link}
+			variant="solid"
+			variantColor="teal"
+			_hover={{textDecoration: 'none'}}
+		>
 			Fale conosco
 		</Button>
 	</Stack>

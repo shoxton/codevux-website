@@ -1,10 +1,19 @@
-import Layout from '../components/layout'
 import React from 'react'
+import { graphql } from 'gatsby'
+import Layout from '../components/layout'
 import * as FaIcons from 'react-icons/fa'
-import { Box, Input, Stack, Textarea, SimpleGrid, Link, Flex, Button, PseudoBox, Text } from '@chakra-ui/core'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 import { Section, SectionHeading } from '../components/utils'
-import { graphql } from 'gatsby'
+import ContactForm from '../components/form'
+import {
+	Box,
+	Stack,
+	SimpleGrid,
+	Link,
+	Flex,
+	PseudoBox,
+	Text,
+} from '@chakra-ui/core'
 
 const ContactPage = (props) => {
 
@@ -20,42 +29,12 @@ const ContactPage = (props) => {
 			<Section>
 				<Container flexDirection="column">
 					<SectionHeading
-						heading="Vamos criar algo invrível juntos?"
+						heading="Vamos criar algo incrível juntos?"
 						text="Conte-nos mais sobre seu projeto"
 					/>
 					<SimpleGrid spacing={8} columns={{base: 1, lg: 2}}>
 						<Box>
-							<form action="">
-								<Stack spacing={4}>
-									<Input
-										variant="filled"
-										focusBorderColor="teal.500"
-										placeholder="Nome"
-										size="lg"
-									/>
-									<Input
-										variant="filled"
-										focusBorderColor="teal.500"
-										placeholder="Email"
-										size="lg"
-									/>
-									<Textarea
-										placeholder="Mensagem"
-										resize="vertical"
-										variant="filled"
-										focusBorderColor="teal.500"
-										size="lg"
-									/>
-									<Button
-										rightIcon="arrow-right"
-										type="submit"
-										variantColor="teal"
-										size="lg"
-									>
-										Enviar
-									</Button>
-								</Stack>
-							</form>
+							<ContactForm />
 						</Box>
 						<Stack
 							p={{base: 8, lg: 16}}
@@ -104,6 +83,7 @@ const ContactPage = (props) => {
 									const iconName = `Fa${stLetterToUpp(key)}`
 									return(
 										<Link
+											key={index}
 											textAlign="center"
 											color="white"
 											href={value}
