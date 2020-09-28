@@ -75,7 +75,6 @@ export const NavMenu = ({children, ...props}) => (
 		<Button
 			to="/contato"
 			as={Link}
-			variant="solid"
 			variantColor="teal"
 			_hover={{textDecoration: 'none'}}
 		>

@@ -14,6 +14,7 @@ import {
 	PseudoBox,
 	Text,
 } from '@chakra-ui/core'
+import SEO from '../components/seo'
 
 const ContactPage = (props) => {
 
@@ -24,7 +25,11 @@ const ContactPage = (props) => {
 	const { contact, social } = props.data.site.siteMetadata
 
 	return(
-
+		<>
+		<SEO
+			title="Fale conosco"
+			description="Vamos criar algo incrível juntos? Fale conosco para saber mais sobre nossos serviços e soluções, incluindo desenvolvimento de sites, blogs, lojas virtuais e sistemas personalizados."
+		/>
 		<Layout>
 			<Section>
 				<Container flexDirection="column">
@@ -110,6 +115,7 @@ const ContactPage = (props) => {
 				</Container>
 			</Section>
 		</Layout>
+		</>
 	)
 
 }

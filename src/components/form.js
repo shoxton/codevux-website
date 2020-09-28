@@ -16,7 +16,7 @@ import {
 
 const ContactForm = () => {
 
-	const { register, errors, formState, handleSubmit, reset, setError } = useForm()
+	const { register, errors, formState, handleSubmit, reset, setError } = useForm({mode: 'onChange'})
 
 	const [submitted, setSubmitted] = useState(null);
 
@@ -86,8 +86,11 @@ const ContactForm = () => {
 						ref={register({required: "Preencha este campo."})}
 						placeholder="Nome"
 						variant="filled"
+						isInvalid={errors.name}
 						focusBorderColor="teal.500"
+    				errorBorderColor="crimson"
 						size="lg"
+
 					/>
 					<FormErrorMessage>
 						{errors.name && errors.name.message}
@@ -104,6 +107,8 @@ const ContactForm = () => {
                 message: "Digite um email válido."
               }
 						})}
+						isInvalid={errors.email}
+						focusBorderColor="teal.500"
 						placeholder="Email"
 						variant="filled"
 						focusBorderColor="teal.500"
@@ -124,6 +129,8 @@ const ContactForm = () => {
 								message: `Mínimo de 20 caracteres.`
 							}
 						})}
+						isInvalid={errors.message}
+						focusBorderColor="teal.500"
 						placeholder="Mensagem"
 						resize="vertical"
 						variant="filled"
