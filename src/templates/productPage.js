@@ -7,15 +7,13 @@ import { Benefits, Features, ProductList } from "../components/product"
 import SEO from "../components/seo"
 import { CTA, SectionHeading } from "../components/utils"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
-import Image from '../components/image'
-import { StaticQuery } from 'gatsby'
 
 
 export const ProductPage = (props) => {
 	return(
 		<Box>
 			<SEO
-				title={props.data.contentfulProduct.title}
+				title={`Criar ${props.data.contentfulProduct.title}`}
 				description={props.data.contentfulProduct.description.description}
 			/>
 			<Intro
@@ -38,7 +36,7 @@ export const ProductPage = (props) => {
 						heading="Leve seu negócio para o próximo nível"
 						text="Benefícios e vantagens"
 					/>
-					<SimpleGrid spacing={16} columns={2}>
+					<SimpleGrid spacing={16} columns={{base: 1, lg: 2}}>
 						<Benefits benefits={props.data.contentfulProduct.benefits} />
 					</SimpleGrid>
 				</Section>

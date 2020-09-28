@@ -1,4 +1,5 @@
 import { graphql } from 'gatsby'
+import SEO from "../../components/seo"
 import { Box, Button } from '@chakra-ui/core'
 import { Section } from '../../components/utils'
 import Intro from '../../components/intro'
@@ -7,15 +8,18 @@ import Link from "../../gatsby-plugin-chakra-ui/components/link"
 import { ProductList } from '../../components/product'
 
 
-
+<SEO
+	title={props.data.contentfulService.title}
+	description={props.data.contentfulService.description}
+/>
 <Intro
 	headline={props.data.contentfulService.title}
 	intro={props.data.contentfulService.description}
-	btnText="Desenvolver projeto"
+	btnText="Fale conosco"
 	to="/contato"
 	variant="outline"
-	variantColor="teal"
-	_hover={{bg: 'teal.500', color: 'white'}}
+	variantColor="gray.700"
+	_hover={{bg: "gray.700", color: "white", textDecoration: "none"}}
 />
 <Container>
 	<Section pt="0!important" >

@@ -10,8 +10,14 @@ import React from "react"
 import PropTypes from "prop-types"
 import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
+import { useLocation } from "@reach/router"
 
-function SEO({ description, lang, meta, title }) {
+function SEO({ title, description, lang, meta }) {
+
+	const { pathname } = useLocation()
+
+	const isRootPath = pathname === '/'
+
   const { site } = useStaticQuery(
     graphql`
       query {
@@ -26,6 +32,8 @@ function SEO({ description, lang, meta, title }) {
     `
   )
 
+	const defaultTitle = site.siteMetadata.longTitle
+	const defaultTitleTemplate = !isRootPath ? `%s | ${site.siteMetadata.title}` : defaultTitle
   const metaDescription = description || site.siteMetadata.description
 
   return (
@@ -33,8 +41,8 @@ function SEO({ description, lang, meta, title }) {
       htmlAttributes={{
         lang,
       }}
-      title={title}
-      titleTemplate={`%s | ${site.siteMetadata.title}`}
+      title={title || defaultTitle}
+      titleTemplate={defaultTitleTemplate}
       meta={[
         {
           name: `description`,
@@ -83,7 +91,7 @@ SEO.propTypes = {
   description: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
-  title: PropTypes.string.isRequired,
+  title: PropTypes.string,
 }
 
 export default SEO

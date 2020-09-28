@@ -5,7 +5,6 @@ import {
 	DrawerContent,
 	DrawerHeader,
 	DrawerBody,
-	DrawerFooter,
 	DrawerCloseButton,
 	Heading
  } from '@chakra-ui/core'

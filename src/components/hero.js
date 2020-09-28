@@ -5,16 +5,16 @@ import Container from '../gatsby-plugin-chakra-ui/components/container'
 const Hero = () => {
 
 	return (
-		<Flex h="100vh" bg="gray.700">
+		<Flex h="100vh" bg="">
 			<Container align="center">
 				<Box maxW={{md:"2xl"}}>
 					<Heading
 						as="p"
 						fontWeight="medium"
 						textTransform="uppercase"
-						fontSize="lg"
 						letterSpacing="wider"
 						color="gray.500"
+						fontSize={{base: 'sm', lg: 'lg'}}
 					>
 						Desenvolvimento web
 					</Heading>
@@ -22,13 +22,13 @@ const Hero = () => {
 						fontWeight="bold"
 						as="h1"
 						my={2}
-						color="white"
+						color="gray.700"
 						fontSize={{base: '3xl', md: '5xl'}}
 					>
 						Inovação e tecnologia trabalhando a seu favor
 					</Heading>
 					<Text
-						color="gray.200"
+						color="gray.500"
 						fontSize={{base: 'xl', md: '3xl'}}
 						lineHeight="shorter"
 						mb={2}

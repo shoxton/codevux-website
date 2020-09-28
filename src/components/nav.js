@@ -1,4 +1,4 @@
-import { Box, Flex, Stack, Heading, Button, useDisclosure } from '@chakra-ui/core'
+import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex } from '@chakra-ui/core'
 import React from 'react'
 import { useStaticQuery } from 'gatsby'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
@@ -30,12 +30,30 @@ const Nav = ({location, childRef, ...props}) => {
 			bg="white"
 			pos="fixed"
 			zIndex="sticky"
+			color="gray.700"
+			borderBottom="1px"
+			borderColor="gray.200"
     >
 			<Container justify="space-between" align="center">
-				<Heading textTransform="uppercase" as={Link} to="/" size="lg">
-					{data.site.siteMetadata.title}
-				</Heading>
+				<Link
+					to="/"
+					_hover={{textDecoration: 'none'}}
+				>
+					<Flex
+						alignItems="center"
+					>
+						<Icon name="codevux" size={{base: '33px', lg: '40px'}} />
+						<Heading
+							ml={-2}
+							textTransform="uppercase"
+							size="lg"
+							fontWeight="800"
 
+						>
+							{data.site.siteMetadata.title}
+						</Heading>
+					</Flex>
+				</Link>
 				<Button size="sm" variant="outline" display={{ base: "block", lg: "none" }}  onClick={onOpen}>
 					&#9776;
 				</Button>

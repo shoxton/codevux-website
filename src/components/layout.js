@@ -7,9 +7,6 @@
 
 import React, { useRef, useState, useEffect } from "react"
 import PropTypes from "prop-types"
-import { useStaticQuery, graphql } from "gatsby"
-
-import Header from "./header"
 import "./layout.css"
 import Footer from "./footer"
 import Nav from "./nav"
@@ -26,16 +23,6 @@ const Layout = ({ location, children }) => {
 	useEffect(() => {
 		setNavHeight(getNavHeight())
 	}, [navRef])
-
-  const data = useStaticQuery(graphql`
-    query SiteTitleQuery {
-      site {
-        siteMetadata {
-          title
-        }
-      }
-    }
-  `)
 
   return (
     <>

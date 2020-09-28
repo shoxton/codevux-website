@@ -1,4 +1,4 @@
-import { Flex, Box, Button, Heading, Text, SimpleGrid } from '@chakra-ui/core'
+import { Box, Button, Heading, Text, SimpleGrid } from '@chakra-ui/core'
 import React from 'react'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'

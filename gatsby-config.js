@@ -4,9 +4,19 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Codevux`,
-    description: `Desenvolvimento web`,
-    author: `@codevux`,
+		title: `Codevux`,
+		longTitle: `Codevux | Desenvolvimento Web`,
+    description: `Desenvolvimento de sites, lojas virtuais, blogs e sistemas personalizados. Desenvolvemos soluções que impactam você, seu negócio e seu cliente.`,
+		author: `@codevux`,
+		contact: {
+			phone: `51999793218`,
+			email: `codevux@gmail.com`,
+		},
+		social: {
+			twitter: `https://twitter.com/codevux`,
+			facebook: `https://facebook.com/codevux`,
+			github: `https://github.com/codevux`
+		}
   },
   plugins: [
     `gatsby-plugin-react-helmet`,
@@ -22,13 +32,13 @@ module.exports = {
     {
       resolve: `gatsby-plugin-manifest`,
       options: {
-        name: `gatsby-starter-default`,
-        short_name: `starter`,
+        name: `Codevux | Desenvolvimento Web`,
+        short_name: `Codevux`,
         start_url: `/`,
-        background_color: `#663399`,
-        theme_color: `#663399`,
+        background_color: `#2D3748`,
+        theme_color: `#2D3748`,
         display: `minimal-ui`,
-        icon: `src/images/gatsby-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/codevux-logo.png`, // This path is relative to the root of the site.
       },
     },
 		"gatsby-plugin-chakra-ui",
@@ -38,7 +48,7 @@ module.exports = {
         fonts: [
           {
             family: `Montserrat`,
-            variants: [`200`, `400`, `500`, `700`, `900`]
+            variants: [`200`, `400`, `500`, `700`, `800`]
           },
           {
             family: `Open Sans`,

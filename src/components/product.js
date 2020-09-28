@@ -1,6 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
-import { Box, Icon, Heading, Text, Button, SimpleGrid, Flex, List, ListItem, ListIcon } from "@chakra-ui/core"
+import { Box, Icon, Heading, Text, Button, SimpleGrid, Flex } from "@chakra-ui/core"
 import Link from "../gatsby-plugin-chakra-ui/components/link"
 
 const ProductItem = ({title, description, slug, service, ...props}) => {
@@ -11,9 +10,8 @@ const ProductItem = ({title, description, slug, service, ...props}) => {
 				borderRadius="md"
 				bg="white"
 				border="1px"
-				borderColor="gray.300"
+				borderColor="gray.200"
 				>
-					{console.log(service)}
 				<Link to={`/${service.slug}/${slug}`}>
 					<Heading
 						as="h2"
@@ -80,28 +78,32 @@ export const Benefits = ({benefits}) => (
 	</SimpleGrid>
 )
 export const Features = ({features}) => (
-	<SimpleGrid spacing={16} columns={{base: 1, lg: 3}} fontSize={{base: 'xl', lg:'2xl'}}>
+	<SimpleGrid spacing={{base: 8, lg: 16}} columns={{base: 1, lg: 3}} fontSize={{base: 'xl', lg:'2xl'}}>
 		{
 			features.map((feature, index) => (
-				<Box key={`feature-${index}`} >
-					<Icon mb={4} size={12} name="check-circle" color="teal.500" />
-					<Heading
-						as="h4"
-						fontSize={{base: 'xl', lg:'xl'}}
-						color="gray.700"
-						fontWeight="medium"
-						mb={2}
-					>
-						{feature.title}
-					</Heading>
-					<Text
-						color="gray.500"
-						fontSize="lg"
-						lineHeight="normal"
-					>
-						{feature.description}
-					</Text>
-				</Box>
+				<Flex key={`feature-${index}`}
+					align="baseline"
+				>
+					<Icon mr={4} size={4} name="arrow-right" color="teal.500" />
+					<Box>
+						<Heading
+							as="h4"
+							fontSize={{base: 'xl', lg:'xl'}}
+							color="gray.700"
+							fontWeight="medium"
+							mb={2}
+						>
+							{feature.title}
+						</Heading>
+						<Text
+							color="gray.500"
+							fontSize="lg"
+							lineHeight="normal"
+						>
+							{feature.description}
+						</Text>
+					</Box>
+				</Flex>
 			))
 		}
 	</SimpleGrid>

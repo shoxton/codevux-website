@@ -30,10 +30,10 @@ export const SectionHeading = ({heading, text, ...props}) => (
 			>
 				{ heading }
 			</Heading>
-			<Divider display={{base: 'none', lg: 'block'}}  flex="1" border="2px" />
+			<Divider display={{base: 'none', lg: 'block'}}  flex="1" border="1px" />
 		</Stack>
 
-		<Divider maxW={32} display={{base: 'block', lg: 'none'}} border="2px" />
+		<Divider maxW={32} display={{base: 'block', lg: 'none'}} border="1px" />
 	</Flex>
 )
 

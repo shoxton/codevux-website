@@ -1,19 +1,19 @@
-import { Box, Heading, Image, List, ListItem, Text, Button, Stack, SimpleGrid } from '@chakra-ui/core'
+import { Box, Heading, List, ListItem, Text, Button, Stack, SimpleGrid } from '@chakra-ui/core'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
-import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 
 const ServiceItem = ({reversed, title, description, image, slug, product, ...props}) => {
 
 	return (
 		<Box
-			borderRadius="md"
+			borderRadius={{base: 'none', lg: 'md'}}
 			bg="white"
 			overflow="hidden"
 			borderWidth='1px'
-			borderColor='gray.300'
+			borderColor='gray.200'
+			mx={[-4, 'initial']}
 			{...props}
 		>
 			<SimpleGrid
@@ -21,8 +21,8 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 			>
 				<Box
 					order={{base: 2, lg:reversed ? 2: 1}}
-					px={{base: 4, lg: 8}}
-					py={{base: 4, lg: 8}}
+					px={{base: 8, lg: 16}}
+					py={{base: 8, lg: 16}}
 				>
 					<Heading
 						as="h2"
@@ -55,7 +55,8 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 									key={`${product.slug}-${index}`}
 								>
 									<Button
-										fontWeight="medium"
+										fontWeight="bold"
+										textDecoration="underline"
 										rightIcon="chevron-right"
 										variant="unstyled"
 										as={Link}
@@ -78,7 +79,6 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 						Saiba mais
 					</Button>
 				</Box>
-				{console.log(image)}
 				<Img fluid={image.fluid} alt={image.title}/>
 			</SimpleGrid>
 		</Box>
