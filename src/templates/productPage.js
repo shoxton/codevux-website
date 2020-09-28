@@ -7,9 +7,40 @@ import { Benefits, Features, ProductList } from "../components/product"
 import SEO from "../components/seo"
 import { CTA, SectionHeading } from "../components/utils"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
+import { graphql, useStaticQuery } from 'gatsby'
 
 
 export const ProductPage = (props) => {
+
+	const query = useStaticQuery(graphql`
+		query {
+			mobileImage: file(relativePath: { eq: "product_benefits.jpg" }) {
+				childImageSharp {
+					fluid(quality: 80, maxWidth: 700) {
+						...GatsbyImageSharpFluid_withWebp_noBase64
+					}
+				}
+			}
+			desktopImage: file(relativePath: { eq: "product_benefits.jpg" }) {
+				childImageSharp {
+					fluid(quality: 80, maxWidth: 1200) {
+						...GatsbyImageSharpFluid_withWebp_noBase64
+					}
+				}
+			}
+		}
+	`)
+
+
+	const imageSources = [
+		query.mobileImage.childImageSharp.fluid,
+		{
+			...query.desktopImage.childImageSharp.fluid,
+			media: `(min-width: 768px)`
+		}
+	]
+
+
 	return(
 		<Box>
 			<SEO
@@ -38,6 +69,15 @@ export const ProductPage = (props) => {
 					/>
 					<SimpleGrid spacing={16} columns={{base: 1, lg: 2}}>
 						<Benefits benefits={props.data.contentfulProduct.benefits} />
+						<Box
+							borderRadius="lg"
+							overflow="hidden"
+						>
+							<Img
+								fluid={imageSources}
+								alt={props.data.contentfulProduct.benefits.join(", ")}
+							/>
+						</Box>
 					</SimpleGrid>
 				</Section>
 				<Section>
