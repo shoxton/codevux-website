@@ -30,6 +30,7 @@ const ContactForm = () => {
     honeypotName: 'bot-field',
     onSuccess: (response, context) => {
 			console.log('Successfully sent form data to Netlify Server')
+			reset()
 		},
 		onFailure: (response, context) => {
 			console.log("Failed to send form data to Netlify Server")
