@@ -27,7 +27,8 @@
     "react-dom": "^16.12.0",
     "react-helmet": "^6.1.0",
     "react-hook-form": "^6.8.6",
-    "react-icons": "^3.11.0"
+    "react-icons": "^3.11.0",
+    "react-netlify-forms": "^1.2.0"
   },
   "devDependencies": {
     "prettier": "2.1.1"
