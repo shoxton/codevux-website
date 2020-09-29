@@ -1,14 +1,16 @@
+import React from 'react'
 import { graphql } from "gatsby"
 import ProductPage from "../../templates/productPage"
 
-
-<ProductPage {...props} />
+export default (props) => (
+	<ProductPage {...props} />
+)
 
 
 
 export const query = graphql`
 	{
-    contentfulProduct(slug: {eq: "criar-loja-virtual"}) {
+    contentfulProduct(slug: {eq: "criar-blog"}) {
       title
       slug
       description {

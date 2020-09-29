@@ -16,7 +16,7 @@ import {
 } from '@chakra-ui/core'
 import SEO from '../components/seo'
 
-const ContactPage = (props) => {
+export default (props) => {
 
 	const stLetterToUpp = (string) => {
 		return string.charAt(0).toUpperCase() + string.slice(1);
@@ -119,8 +119,6 @@ const ContactPage = (props) => {
 	)
 
 }
-
-export default ContactPage
 
 export const ContactQuery = graphql`
 	query ContactQuery {

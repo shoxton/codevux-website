@@ -8,6 +8,7 @@ import SEO from "../components/seo"
 import { CTA, SectionHeading } from "../components/utils"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
 import { graphql, useStaticQuery } from 'gatsby'
+import Layout from '../components/layout'
 
 
 export const ProductPage = (props) => {
@@ -42,7 +43,7 @@ export const ProductPage = (props) => {
 
 
 	return(
-		<Box>
+		<Layout>
 			<SEO
 				title={`Criar ${props.data.contentfulProduct.title}`}
 				description={props.data.contentfulProduct.description.description}
@@ -98,7 +99,7 @@ export const ProductPage = (props) => {
 					<ProductList service={props.data.contentfulProduct.serviceCategory} />
 				</Section>
 			</Container>
-		</Box>
+		</Layout>
 	)
 }
 

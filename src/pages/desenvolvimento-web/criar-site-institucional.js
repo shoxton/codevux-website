@@ -1,8 +1,11 @@
+import React from 'react'
 import { graphql } from "gatsby"
 import ProductPage from "../../templates/productPage"
 
+export default (props) => (
+	<ProductPage {...props} />
+)
 
-<ProductPage {...props} />
 
 
 
