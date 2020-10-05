@@ -29,7 +29,7 @@ const Layout = ({ location, children }) => {
 			<Nav childRef={navRef} location={location} />
 			<Box
 				as="main"
-				pt={`${navHeight}px`}
+				// pt={`${navHeight}px`}
 			>
 				{children}
 			</Box>

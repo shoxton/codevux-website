@@ -1,4 +1,4 @@
-import { Box, Heading, List, ListItem, Text, Button, Stack, SimpleGrid } from '@chakra-ui/core'
+import { Box, Heading, List, ListItem, Text, Button, Stack, SimpleGrid, PseudoBox } from '@chakra-ui/core'
 import { useStaticQuery, graphql } from 'gatsby'
 import Img from 'gatsby-image'
 import React from 'react'
@@ -8,33 +8,31 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 
 	return (
 		<Box
-			borderRadius={{base: 'none', lg: 'md'}}
-			bg="white"
-			overflow="hidden"
-			borderWidth='1px'
-			borderColor='gray.200'
+			borderLeftWidth="3px"
+			pl={4}
+			borderColor="gray.200"
 			mx={[-4, 'initial']}
 			{...props}
 		>
 			<SimpleGrid
-				columns={{base: 1, lg: 2}}
+				columns={{base: 1, lg: 1}}
 			>
 				<Box
 					order={{base: 2, lg:reversed ? 2: 1}}
-					px={{base: 8, lg: 16}}
-					py={{base: 8, lg: 16}}
 				>
 					<Heading
 						as="h2"
-						fontSize={{base: '2xl', lg: '3xl'}}
+						fontSize={{base: 'xl', lg: '2xl'}}
 						fontWeight="medium"
 						pb={{base: 2, lg: 4}}
 						color="gray.700"
 					>
-						{title}
+						<Link>
+							{title}
+						</Link>
 					</Heading>
 					<Text
-						fontSize={["lg", "xl"]}
+						fontSize={["md", "lg"]}
 						lineHeight="shorter"
 						pb={{base: 2, lg: 4}}
 						color="gray.500"
@@ -55,10 +53,11 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 									key={`${product.slug}-${index}`}
 								>
 									<Button
-										fontWeight="bold"
-										textDecoration="underline"
+										fontWeight="medium"
 										rightIcon="chevron-right"
 										variant="unstyled"
+										fontSize="sm"
+										color="gray.700"
 										as={Link}
 										to={`/${slug}/${product.slug}`}
 									>
@@ -69,17 +68,8 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 						}
 
 					</List>
-					<Button
-						to={`/${slug}`}
-						as={Link}
-						variant="outline"
-						variantColor="gray.700"
-						_hover={{color: 'white', bg: 'gray.700', textDecoration: 'none'}}
-					>
-						Saiba mais
-					</Button>
 				</Box>
-				<Img fluid={image.fluid} alt={image.title}/>
+				{/* <Img fluid={image.fluid} alt={image.title}/> */}
 			</SimpleGrid>
 		</Box>
 	)
@@ -108,7 +98,7 @@ export const ServiceList = () => {
     }
 	`)
 	return (
-		<Stack spacing={32}>
+		<SimpleGrid columns={3} spacing={4}>
 			{nodes.map((service, index) => (
 				(!(index % 2)) ?
 				<ServiceItem key={`${service.slug}-${index}`} {...service} />
@@ -116,7 +106,7 @@ export const ServiceList = () => {
 				<ServiceItem key={`${service.slug}-${index}`} {...service} reversed />
 				)
 			)}
-		</Stack>
+		</SimpleGrid>
 	)
 }
 

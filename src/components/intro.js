@@ -4,38 +4,62 @@ import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 
 
-const Intro = ({headline, intro, btnText, to, children, ...props}) => (
-	<Container minH="50vh" bg="white" color="gray.700" py="5vh">
-		<SimpleGrid  spacing={4} alignItems="center" columns={{base: 1, lg: 2}}>
-			<Box maxW={{lg:"2xl"}}>
-				<Heading pb={2} as="h1">
-					{headline}
-				</Heading>
-				<Text
-					lineHeight="shorter"
-					fontSize={{base: 'xl', lg: '2xl'}}
-					pb={4}
-					color="gray.500"
-				>
-					{intro}
-				</Text>
-				{ btnText &&
-					<Button
-						as={Link}
-						to={to}
-						_hover={{textDecoration: 'none', ...props._hover}}
-						variant={props.variant || "outline"}
-						variantColor={props.variantColor}
-					>
-						{btnText}
-					</Button>
-				}
+const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...props}) => {
+
+	const theme = {
+		"light": {
+			bg: "white",
+			heading: "gray.700",
+			intro: "gray.500",
+			btn: "gray"
+		},
+		"dark": {
+			bg: "gray.700",
+			heading: "white",
+			intro: "gray.200",
+			btn: "white"
+		}
+	}
+
+	return(
+		<Box bg={theme[themeColor].bg}>
+			<Container minH={props.minH || `50vh`} py="5vh" {...props} >
+				<SimpleGrid  spacing={4} alignItems="center" columns={{base: 1, lg: 2}}>
+					<Box maxW={{lg:"2xl"}}>
+						<Heading
+							color={theme[themeColor].heading}
+							pb={2}
+							as="h1"
+						>
+							{headline}
+						</Heading>
+						<Text
+							lineHeight="shorter"
+							fontSize={{base: 'xl', lg: '2xl'}}
+							pb={4}
+							color={theme[themeColor].intro}
+						>
+							{intro}
+						</Text>
+						{ btnText &&
+							<Link
+								as={Button}
+								to={to}
+								_hover={{textDecoration: 'none', ...Button._hover}}
+								variant="solid"
+								variantColor={theme[themeColor].btn}
+							>
+								{btnText}
+							</Link>
+						}
+					</Box>
+					<Box>
+						{children}
+					</Box>
+				</SimpleGrid>
+			</Container>
 			</Box>
-			<Box>
-				{children}
-			</Box>
-		</SimpleGrid>
-	</Container>
-)
+	)
+}
 
 export default Intro

@@ -17,9 +17,7 @@ export default (props) => (
 			intro="Combinando inovação e tecnologia para impulsionar o crescimento do seu negócio"
 			btnText="Fale conosco"
 			to="/contato"
-			variant="outline"
-			variantColor="gray.700"
-			_hover={{bg: "gray.700", color: "white", textDecoration: "none"}}
+			themeColor="dark"
 		/>
 		<Container>
 			<Section pt="0!important" >

@@ -1,5 +1,5 @@
 import React from "react"
-import { Box, Icon, Heading, Text, Button, SimpleGrid, Flex } from "@chakra-ui/core"
+import { Box, Icon, Heading, Text, Button, SimpleGrid, Flex, List, ListItem, ListIcon } from "@chakra-ui/core"
 import Link from "../gatsby-plugin-chakra-ui/components/link"
 
 const ProductItem = ({title, description, slug, service, ...props}) => {
@@ -57,25 +57,23 @@ export const ProductList = ({ service, ...props}) => {
 }
 
 export const Benefits = ({benefits}) => (
-	<SimpleGrid
-		columns={{base: 1}}
-		spacing={4}
+	<List
+		spacing={8}
 		fontSize={{base: 'lg', lg:'xl'}}
 	>
 		{
 			benefits.map((benefit, index) => (
-				<Flex
-					align="center"
+				<ListItem
 					lineHeight="shorter"
 					color="gray.700"
 					key={`benefit-${index}`}
 				>
-					<Icon size={8} name="chevron-right" color="teal.500" />
-					<Text>{benefit}</Text>
-				</Flex>
+					<ListIcon icon="check-circle" color="teal.500" />
+					{benefit}
+				</ListItem>
 			))
 		}
-	</SimpleGrid>
+	</List>
 )
 export const Features = ({features}) => (
 	<SimpleGrid spacing={{base: 8, lg: 16}} columns={{base: 1, lg: 3}} fontSize={{base: 'xl', lg:'2xl'}}>

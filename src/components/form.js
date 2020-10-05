@@ -26,17 +26,18 @@ const ContactForm = () => {
 	const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
 
 	const netlify = useNetlifyForm({
-    name: 'contact-form',
-    honeypotName: 'bot-field',
-    onSuccess: (response, context) => {
-			console.log('Successfully sent form data to Netlify Server')
-			reset()
-		},
+		name: 'contact-form',
+		honeypotName: 'bot-field',
+		onSuccess: (response, context) => {
+				console.log('Successfully sent form data to Netlify Server')
+				reset()
+			},
 		onFailure: (response, context) => {
 			console.log("Failed to send form data to Netlify Server")
 		}
-  })
-  const onSubmit = (data) => netlify.handleSubmit(null, data)
+	})
+
+  	const onSubmit = (data) => netlify.handleSubmit(null, data)
 
 	return(
 		<>

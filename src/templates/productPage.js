@@ -62,8 +62,8 @@ export const ProductPage = (props) => {
 					fluid={props.data.contentfulProduct.image.fluid}
 				/>
 			</Intro>
-			<Container flexDirection="column" >
-				<Section>
+			<Section bg="gray.50">
+				<Container>
 					<SectionHeading
 						heading="Leve seu negócio para o próximo nível"
 						text="Benefícios e vantagens"
@@ -80,25 +80,27 @@ export const ProductPage = (props) => {
 							/>
 						</Box>
 					</SimpleGrid>
-				</Section>
-				<Section>
+				</Container>
+			</Section>
+			<Section>
+				<Container>
 					<SectionHeading
 						heading="Seu negócio sempre a frente dos concorrentes"
 						text="Funcionalidades e diferenciais"
 					/>
 					<Features features={props.data.contentfulProduct.features}  />
-				</Section>
-			</Container>
+				</Container>
+			</Section>
 			<CTA bg="gray.700" color="white" variant="solid" variantColor="teal" />
-			<Container>
-				<Section>
+			<Section>
+				<Container>
 					<SectionHeading
 						heading="Confira outras soluções"
 						text="Não é o que você estava procurando?"
 					/>
 					<ProductList service={props.data.contentfulProduct.serviceCategory} />
-				</Section>
-			</Container>
+				</Container>
+			</Section>
 		</Layout>
 	)
 }

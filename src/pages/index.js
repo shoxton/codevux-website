@@ -13,7 +13,7 @@ export default (props) => (
 		/>
 		<Hero />
 		<Container>
-			<Section pt="0!important">
+			<Section>
 				<SectionHeading
 					heading="Serviços e soluções"
 					text="Nosso objetivo é agregar valor"

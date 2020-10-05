@@ -4,13 +4,13 @@ import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 
 export const Section = ({children, ...props}) => (
-	<Box as="section" py={{base: 16, lg: 32}} {...props} >
+	<Box w="full" as="section" py={{base: 16, lg: 32}} {...props} >
 		{children}
 	</Box>
 )
 
 export const SectionHeading = ({heading, text, ...props}) => (
-	<Flex flexDirection={props.flexDirection || 'column'} mb={{base: 16, lg: 32}} {...props} >
+	<Flex w="full" flexDirection={props.flexDirection || 'column'} mb={{base: 16, lg: 32}} {...props} >
 		<Text
 			textTransform="uppercase"
 			letterSpacing="wide"
