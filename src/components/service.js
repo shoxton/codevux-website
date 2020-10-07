@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import React from 'react'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 
-const ServiceItem = ({reversed, title, description, image, slug, product, ...props}) => {
+const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props}) => {
 
 	return (
 		<Box
@@ -27,7 +27,9 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 						pb={{base: 2, lg: 4}}
 						color="gray.700"
 					>
-						<Link>
+						<Link
+							to={`/${slug}`}
+						>
 							{title}
 						</Link>
 					</Heading>
@@ -37,7 +39,7 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 						pb={{base: 2, lg: 4}}
 						color="gray.500"
 					>
-						{description}
+						{shortDescription}
 					</Text>
 					<List
 						fontSize="lg"
@@ -47,7 +49,7 @@ const ServiceItem = ({reversed, title, description, image, slug, product, ...pro
 						pb={{base: 2, lg: 4}}
 					>
 						{
-							product.map((product, index) => (
+							product?.map((product, index) => (
 								<ListItem
 									as="h4"
 									key={`${product.slug}-${index}`}
@@ -81,14 +83,8 @@ export const ServiceList = () => {
 			allContentfulService {
 				nodes {
 					title
-					description
 					slug
-					image {
-						fluid(quality: 80, maxHeight: 300) {
-							...GatsbyContentfulFluid_withWebp_noBase64
-						}
-						title
-					}
+					shortDescription
 					product {
 						title
 						slug
@@ -99,7 +95,7 @@ export const ServiceList = () => {
 	`)
 	return (
 		<SimpleGrid columns={3} spacing={4}>
-			{nodes.map((service, index) => (
+			{nodes?.map((service, index) => (
 				(!(index % 2)) ?
 				<ServiceItem key={`${service.slug}-${index}`} {...service} />
 				:

@@ -11,33 +11,32 @@ export default (props) => (
 
 export const query = graphql`
 	{
-    contentfulProduct(slug: {eq: "criar-site-institucional"}) {
-      title
-      slug
-      description {
-        description
-      }
-      image {
-        fluid(quality: 80, maxHeight: 300) {
-          ...GatsbyContentfulFluid_withWebp_noBase64
-        }
-        title
-      }
-      benefits
-      features {
-        title
-        description
-      }
-      serviceCategory {
-        slug
-        product {
-          title
-          description {
-            description
-          }
-          slug
-        }
-      }
-    }
-  }
+		contentfulProduct (slug: {eq: "criar-site-institucional"})  {
+			title
+			slug
+			perks
+			headline
+			description {
+				description
+			}
+			heroImage {
+				fluid(quality: 80, maxHeight: 300) {
+					...GatsbyContentfulFluid_withWebp_noBase64
+				}
+				title
+			}
+			features {
+				title
+				description
+			}
+			belongsTo {
+				slug
+				product {
+					title
+					slug
+					shortDescription
+				}
+			}
+		}
+	}
 `

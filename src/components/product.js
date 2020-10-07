@@ -2,7 +2,7 @@ import React from "react"
 import { Box, Icon, Heading, Text, Button, SimpleGrid, Flex, List, ListItem, ListIcon } from "@chakra-ui/core"
 import Link from "../gatsby-plugin-chakra-ui/components/link"
 
-const ProductItem = ({title, description, slug, service, ...props}) => {
+const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 	return(
 			<Flex
 				flexDirection="column"
@@ -12,7 +12,7 @@ const ProductItem = ({title, description, slug, service, ...props}) => {
 				border="1px"
 				borderColor="gray.200"
 				>
-				<Link to={`/${service.slug}/${slug}`}>
+				<Link to={`/${context}/${slug}`}>
 					<Heading
 						as="h2"
 						fontSize="2xl"
@@ -27,14 +27,14 @@ const ProductItem = ({title, description, slug, service, ...props}) => {
 					mb={2}
 					color="gray.600"
 				>
-					{description.description}
+				{shortDescription}
 				</Text>
 				<Button
 					color="gray.700"
 					as={Link}
 					variant="unstyled"
 					rightIcon="chevron-right"
-					to={`/${service.slug}/${slug}`}
+					to={`/${context}/${slug}`}
 				>
 					Saiba mais
 				</Button>
@@ -43,33 +43,37 @@ const ProductItem = ({title, description, slug, service, ...props}) => {
 	)
 }
 
-export const ProductList = ({ service, ...props}) => {
+export const ProductList = ({ products, context, ...props }) => {
 
 	return(
 		<SimpleGrid spacing={4} columns={{base: 1, lg: 3}} {...props}>
 			{
-				service.product.map((product, index) => (
-						<ProductItem service={service} key={`${product.slug}-${index}`} {...product} />
+				products?.map((product, index) => (
+						<ProductItem
+							key={`${product.slug}-${index}`}
+							context={context}
+							{...product}
+						/>
 				))
 			}
 		</SimpleGrid>
 	)
 }
 
-export const Benefits = ({benefits}) => (
+export const Perks = ({perks}) => (
 	<List
 		spacing={8}
 		fontSize={{base: 'lg', lg:'xl'}}
 	>
 		{
-			benefits.map((benefit, index) => (
+			perks?.map((perk, index) => (
 				<ListItem
 					lineHeight="shorter"
 					color="gray.700"
-					key={`benefit-${index}`}
+					key={`perk-${index}`}
 				>
 					<ListIcon icon="check-circle" color="teal.500" />
-					{benefit}
+					{perk}
 				</ListItem>
 			))
 		}
@@ -78,7 +82,7 @@ export const Benefits = ({benefits}) => (
 export const Features = ({features}) => (
 	<SimpleGrid spacing={{base: 8, lg: 16}} columns={{base: 1, lg: 3}} fontSize={{base: 'xl', lg:'2xl'}}>
 		{
-			features.map((feature, index) => (
+			features?.map((feature, index) => (
 				<Flex key={`feature-${index}`}
 					align="baseline"
 				>
