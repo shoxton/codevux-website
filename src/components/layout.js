@@ -12,7 +12,7 @@ import Footer from "./footer"
 import Nav from "./nav"
 import { Box } from "@chakra-ui/core"
 
-const Layout = ({ location, children }) => {
+const Layout = ({ location, children, themeColor="light" }) => {
 
 	// calculates nav height to define body offset
 	const navRef = useRef(null)
@@ -26,7 +26,7 @@ const Layout = ({ location, children }) => {
 
   return (
     <>
-			<Nav childRef={navRef} location={location} />
+			<Nav themeColor={themeColor} childRef={navRef} location={location} />
 			<Box
 				as="main"
 				// pt={`${navHeight}px`}
@@ -39,7 +39,7 @@ const Layout = ({ location, children }) => {
 }
 
 Layout.propTypes = {
-  children: PropTypes.node.isRequired,
+	children: PropTypes.node.isRequired,
 }
 
 export default Layout

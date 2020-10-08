@@ -8,10 +8,13 @@ const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props
 
 	return (
 		<Box
-			borderLeftWidth="3px"
-			pl={4}
-			borderColor="gray.200"
+			boxShadow="md"
+			borderRadius="md"
 			mx={[-4, 'initial']}
+			bg="white"
+			p={{base: 4, lg: 8}}
+			borderTop="4px"
+			borderTopColor="teal.300"
 			{...props}
 		>
 			<SimpleGrid
@@ -34,10 +37,9 @@ const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props
 						</Link>
 					</Heading>
 					<Text
-						fontSize={["md", "lg"]}
 						lineHeight="shorter"
 						pb={{base: 2, lg: 4}}
-						color="gray.500"
+						color="gray.600"
 					>
 						{shortDescription}
 					</Text>
@@ -46,7 +48,6 @@ const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props
 						letterSpacing="wide"
 						fontFamily="Montserrat"
 						color="gray.700"
-						pb={{base: 2, lg: 4}}
 					>
 						{
 							product?.map((product, index) => (
@@ -58,6 +59,9 @@ const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props
 										fontWeight="medium"
 										rightIcon="chevron-right"
 										variant="unstyled"
+										textDecoration="underline"
+										style={{textDecorationStyle: "dotted"}}
+										_hover={{color: "teal.600", ...Button._hover}}
 										fontSize="sm"
 										color="gray.700"
 										as={Link}
@@ -94,7 +98,7 @@ export const ServiceList = () => {
     }
 	`)
 	return (
-		<SimpleGrid columns={3} spacing={4}>
+		<SimpleGrid  p={{base: 4, lg: 0}} columns={{base: 1, lg: 3}} spacing={4}>
 			{nodes?.map((service, index) => (
 				(!(index % 2)) ?
 				<ServiceItem key={`${service.slug}-${index}`} {...service} />

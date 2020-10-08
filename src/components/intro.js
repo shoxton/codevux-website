@@ -22,7 +22,7 @@ const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...p
 	}
 
 	return(
-		<Box bg={theme[themeColor].bg}>
+		<Box bg={theme[themeColor].bg} pt={20}>
 			<Container minH={props.minH || `50vh`} py="5vh" {...props} >
 				<SimpleGrid  spacing={4} alignItems="center" columns={{base: 1, lg: 2}}>
 					<Box maxW={{lg:"2xl"}}>
@@ -35,7 +35,7 @@ const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...p
 						</Heading>
 						<Text
 							lineHeight="shorter"
-							fontSize={{base: 'xl', lg: '2xl'}}
+							fontSize={{base: 'lg', lg: 'xl'}}
 							pb={4}
 							color={theme[themeColor].intro}
 						>

@@ -9,7 +9,7 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 				p={8}
 				borderRadius="md"
 				bg="white"
-				border="1px"
+				boxShadow="md"
 				borderColor="gray.200"
 				>
 				<Link to={`/${context}/${slug}`}>
@@ -33,6 +33,10 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 					color="gray.700"
 					as={Link}
 					variant="unstyled"
+					textTransform="uppercase"
+					height={Link.height}
+					letterSpacing=".25px"
+					size="sm"
 					rightIcon="chevron-right"
 					to={`/${context}/${slug}`}
 				>

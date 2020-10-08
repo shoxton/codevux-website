@@ -7,7 +7,18 @@ import NavMobile from './navMobile'
 
 // using https://chakra-ui.com/drawer
 
-const Nav = ({location, childRef, ...props}) => {
+const Nav = ({location, childRef, themeColor="light", ...props}) => {
+
+	const theme = {
+		"light": {
+			bg: "white",
+			color: "gray.700"
+		},
+		"dark": {
+			bg: "gray.700",
+			color: "white"
+		}
+	}
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
 
@@ -27,12 +38,12 @@ const Nav = ({location, childRef, ...props}) => {
 			as="nav"
 			width="100%"
 			py={4}
-			bg="white"
+			bg="transparent"
 			pos="fixed"
 			zIndex="sticky"
-			color="gray.700"
-			borderBottom="1px"
-			borderColor="gray.200"
+			color={theme[themeColor].color}
+			borderBottom={theme[themeColor] === "light" && '1px'}
+			borderColor={theme[themeColor] === "light" && 'gray.200'}
     >
 			<Container justify="space-between" align="center">
 				<Link

@@ -11,7 +11,7 @@ export default (props) => (
 
 export const query = graphql`
 	{
-		contentfulProduct (slug: {eq: "integrar-marketplaces"})  {
+		contentfulProduct (slug: {eq: "integrar-transportadoras"})  {
 			title
 			slug
 			perks
@@ -20,7 +20,7 @@ export const query = graphql`
 				description
 			}
 			heroImage {
-				fluid(quality: 80) {
+				fluid(quality: 80, maxHeight: 300) {
 					...GatsbyContentfulFluid_withWebp_noBase64
 				}
 				title

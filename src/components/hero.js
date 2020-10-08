@@ -13,7 +13,6 @@ const Hero = () => {
 			btnText="Descubra soluções"
 			to="/solucoes"
 			themeColor="dark"
-			minH="75vh"
 		/>
 )
 }

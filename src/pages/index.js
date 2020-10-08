@@ -7,17 +7,17 @@ import Container from "../gatsby-plugin-chakra-ui/components/container"
 import { Section, SectionHeading } from "../components/utils"
 
 export default (props) => (
-	<Layout>
+	<Layout themeColor="dark">
 		<SEO
 			title="Codevux | Desenvolvimento Web"
 		/>
 		<Hero />
 		<Container>
-			<Section>
-				<SectionHeading
+			<Section pt="0!important" mt={{base: '-32px', lg: '-64px'}}>
+				{/* <SectionHeading
 					heading="Serviços e soluções"
 					text="Nosso objetivo é agregar valor"
-				/>
+				/> */}
 				<ServiceList id="index-services" />
 			</Section>
 		</Container>

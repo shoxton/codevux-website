@@ -16,6 +16,7 @@ export const ProductPage = ({
 		contentfulProduct: {
 			title,
 			headline,
+			heroImage,
 			description: { description },
 			perks,
 			features,
@@ -55,7 +56,7 @@ export const ProductPage = ({
 
 
 	return(
-		<Layout>
+		<Layout themeColor="light">
 			<SEO
 				title={`${title}`}
 				description={description}
@@ -69,10 +70,10 @@ export const ProductPage = ({
 				variantColor="gray.700"
 				_hover={{bg: "gray.700", color: "white", textDecoration: "none"}}
 			>
-				{/* <Img
-					alt={image.title}
-					fluid={image.fluid}
-				/> */}
+				<Img
+					alt={heroImage.title}
+					fluid={heroImage.fluid}
+				/>
 			</Intro>
 			<Section bg="gray.50">
 				<Container>
