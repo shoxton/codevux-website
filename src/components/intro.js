@@ -1,7 +1,7 @@
 import { Box, Button, Heading, Text, SimpleGrid } from '@chakra-ui/core'
+import { Link } from 'gatsby'
 import React from 'react'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
-import Link from '../gatsby-plugin-chakra-ui/components/link'
 
 
 const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...props}) => {
@@ -22,8 +22,15 @@ const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...p
 	}
 
 	return(
-		<Box bg={theme[themeColor].bg} pt={20}>
-			<Container minH={props.minH || `50vh`} py="5vh" {...props} >
+		<Box
+			bg={theme[themeColor].bg}
+			pt={20}
+			backgroundPosition="right"
+			backgroundSize="contain"
+			backgroundRepeat="no-repeat"
+			style={{backgroundImage: `url(${props.backgroundImage})`}}
+		>
+			<Container minH={props.minH || `50vh`} py="15vh">
 				<SimpleGrid  spacing={4} alignItems="center" columns={{base: 1, lg: 2}}>
 					<Box maxW={{lg:"2xl"}}>
 						<Heading
@@ -42,15 +49,13 @@ const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...p
 							{intro}
 						</Text>
 						{ btnText &&
-							<Link
-								as={Button}
+							<Button
+								as={Link}
 								to={to}
 								_hover={{textDecoration: 'none', ...Button._hover}}
-								variant="solid"
-								variantColor={theme[themeColor].btn}
 							>
 								{btnText}
-							</Link>
+							</Button>
 						}
 					</Box>
 					<Box>

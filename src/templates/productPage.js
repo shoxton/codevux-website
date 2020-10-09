@@ -20,7 +20,8 @@ export const ProductPage = ({
 			description: { description },
 			perks,
 			features,
-			belongsTo
+			belongsTo,
+			modules
 		},
 		...props
 	}
@@ -57,6 +58,7 @@ export const ProductPage = ({
 
 	return(
 		<Layout themeColor="light">
+			{console.log(modules)}
 			<SEO
 				title={`${title}`}
 				description={description}
@@ -78,28 +80,29 @@ export const ProductPage = ({
 			<Section bg="gray.50">
 				<Container>
 					<SectionHeading
-						heading="Leve seu negócio para o próximo nível"
-						text="Benefícios e vantagens"
+						heading={modules[0].headline}
+						text={modules[0].label}
 					/>
-					<SimpleGrid spacing={16} columns={{base: 1, lg: 2}}>
+					<SimpleGrid
+						width="100%"
+						spacing={8}
+						columns={{base: 1, lg: 2}}
+						alignItems="center"
+					>
 						<Perks perks={perks} />
-						{/* <Box
-							borderRadius="lg"
-							overflow="hidden"
-						>
+						<Box>
 							<Img
-								fluid={imageSources}
-								alt={benefits.join(", ")}
+								fluid={modules[0].media.fluid}
 							/>
-						</Box> */}
+						</Box>
 					</SimpleGrid>
 				</Container>
 			</Section>
 			<Section>
 				<Container>
 					<SectionHeading
-						heading="Seu negócio sempre a frente dos concorrentes"
-						text="Funcionalidades e diferenciais"
+						heading={modules[1].headline}
+						text={modules[1].label}
 					/>
 					<Features features={features}  />
 				</Container>

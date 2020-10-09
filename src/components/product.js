@@ -10,7 +10,8 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 				borderRadius="md"
 				bg="white"
 				boxShadow="md"
-				borderColor="gray.200"
+				borderTop="4px"
+				borderTopColor="teal.300"
 				>
 				<Link to={`/${context}/${slug}`}>
 					<Heading

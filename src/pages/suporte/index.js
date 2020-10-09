@@ -8,7 +8,7 @@ export default (props) => (
 
 export const query = graphql`
 	{
-		contentfulService(slug: {eq: "desenvolvimento-web"}) {
+		contentfulService(slug: {eq: "suporte"}) {
 			title
 			slug
 			headline
@@ -28,4 +28,3 @@ export const query = graphql`
 		}
 	}
 `
-

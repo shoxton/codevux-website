@@ -7,7 +7,7 @@ import Container from '../../gatsby-plugin-chakra-ui/components/container'
 import { Section } from '../../components/utils'
 
 export default (props) => (
-	<Layout>
+	<Layout themeColor="dark">
 		<SEO
 			title="Serviços e soluções"
 			description="Combinando inovação e tecnologia para impulsionar o crescimento do seu negócio"
@@ -20,7 +20,7 @@ export default (props) => (
 			themeColor="dark"
 		/>
 		<Container>
-			<Section pt="0!important" >
+			<Section pt="0!important" mt="-8vh">
 				<ServiceList />
 			</Section>
 		</Container>

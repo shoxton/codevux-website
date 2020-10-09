@@ -37,6 +37,17 @@ export const query = graphql`
 					shortDescription
 				}
 			}
+			modules {
+				title
+				label
+				media {
+					fluid(quality: 80, maxHeight: 300) {
+						...GatsbyContentfulFluid_withWebp_noBase64
+					}
+					title
+				}
+				headline
+			}
 		}
 	}
 `

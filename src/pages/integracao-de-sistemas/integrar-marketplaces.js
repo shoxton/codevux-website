@@ -20,7 +20,7 @@ export const query = graphql`
 				description
 			}
 			heroImage {
-				fluid(quality: 80) {
+				fluid(quality: 80, maxHeight: 300) {
 					...GatsbyContentfulFluid_withWebp_noBase64
 				}
 				title
@@ -36,6 +36,17 @@ export const query = graphql`
 					slug
 					shortDescription
 				}
+			}
+			modules {
+				title
+				label
+				media {
+					fluid(quality: 80, maxHeight: 300) {
+						...GatsbyContentfulFluid_withWebp_noBase64
+					}
+					title
+				}
+				headline
 			}
 		}
 	}
