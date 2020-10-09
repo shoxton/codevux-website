@@ -4,10 +4,11 @@ import { useStaticQuery } from 'gatsby'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 import NavMobile from './navMobile'
+import { throttle } from 'lodash'
 
 // using https://chakra-ui.com/drawer
 
-const Nav = ({location, childRef, themeColor="light", ...props}) => {
+const Nav = ({location, themeColor="light", ...props}) => {
 
 	const theme = {
 		"light": {
@@ -44,12 +45,13 @@ const Nav = ({location, childRef, themeColor="light", ...props}) => {
 
 	useLayoutEffect(() => {
 		const handleScroll = () => {
+			console.log("executed")
 			const show = window.scrollY > 120
 			if(navRef.current !== show) {
 				setNavBg(show)
 			}
 		}
-		document.addEventListener('scroll', handleScroll)
+		document.addEventListener('scroll', throttle(handleScroll, 200))
 		return () => {
 			document.removeEventListener('scroll', handleScroll)
 		}
@@ -57,7 +59,6 @@ const Nav = ({location, childRef, themeColor="light", ...props}) => {
 
   return (
     <Box
-			ref={childRef}
 			as="nav"
 			width="100%"
 			py={4}
