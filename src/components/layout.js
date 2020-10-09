@@ -14,23 +14,10 @@ import { Box } from "@chakra-ui/core"
 
 const Layout = ({ location, children, themeColor="light" }) => {
 
-	// calculates nav height to define body offset
-	const navRef = useRef(null)
-	const [navHeight, setNavHeight] = useState()
-
-	const getNavHeight = () => navRef.current.getBoundingClientRect().height
-
-	useEffect(() => {
-		setNavHeight(getNavHeight())
-	}, [navRef])
-
   return (
     <>
-			<Nav themeColor={themeColor} childRef={navRef} location={location} />
-			<Box
-				as="main"
-				// pt={`${navHeight}px`}
-			>
+			<Nav themeColor={themeColor} location={location} />
+			<Box as="main">
 				{children}
 			</Box>
 			<Footer />
