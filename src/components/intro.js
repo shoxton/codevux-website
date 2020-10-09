@@ -4,7 +4,7 @@ import React from 'react'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 
 
-const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...props}) => {
+const Intro = ({headline, intro, btnText, to, children, backgroundImage="none", themeColor="light", ...props}) => {
 
 	const theme = {
 		"light": {
@@ -28,7 +28,7 @@ const Intro = ({headline, intro, btnText, to, children, themeColor="light", ...p
 			backgroundPosition="right"
 			backgroundSize="contain"
 			backgroundRepeat="no-repeat"
-			style={{backgroundImage: `url(${props.backgroundImage})`}}
+			backgroundImage={backgroundImage}
 		>
 			<Container minH={props.minH || `50vh`} py="15vh">
 				<SimpleGrid  spacing={4} alignItems="center" columns={{base: 1, lg: 2}}>
