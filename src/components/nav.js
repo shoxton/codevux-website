@@ -1,5 +1,5 @@
 import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex } from '@chakra-ui/core'
-import React from 'react'
+import React, { useLayoutEffect, useRef, useState } from 'react'
 import { useStaticQuery } from 'gatsby'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
@@ -12,15 +12,25 @@ const Nav = ({location, childRef, themeColor="light", ...props}) => {
 	const theme = {
 		"light": {
 			bg: "white",
-			color: "gray.700"
+			color: "gray.700",
+			borderColor: "gray.200"
 		},
 		"dark": {
 			bg: "gray.700",
-			color: "white"
+			color: "white",
+			borderColor: "gray.500"
 		}
 	}
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
+	const [navBg, setNavBg] = useState(false)
+	const navRef = useRef()
+	navRef.current = navBg
+
+	const invertThemeColor = () => {
+		if(themeColor === "light") return "dark"
+		return "light"
+	}
 
 	const data = useStaticQuery(graphql`
 		query HeaderQuery {
@@ -32,18 +42,31 @@ const Nav = ({location, childRef, themeColor="light", ...props}) => {
 		}
 	`)
 
+	useLayoutEffect(() => {
+		const handleScroll = () => {
+			const show = window.scrollY > 120
+			if(navRef.current !== show) {
+				setNavBg(show)
+			}
+		}
+		document.addEventListener('scroll', handleScroll)
+		return () => {
+			document.removeEventListener('scroll', handleScroll)
+		}
+	})
+
   return (
     <Box
 			ref={childRef}
 			as="nav"
 			width="100%"
 			py={4}
-			bg="transparent"
+			bg={navBg ? theme[invertThemeColor()].bg : "transparent"}
 			pos="fixed"
 			zIndex="sticky"
-			color={theme[themeColor].color}
-			borderBottom={theme[themeColor] === "light" && '1px'}
-			borderColor={theme[themeColor] === "light" && 'gray.200'}
+			color={navBg ? theme[invertThemeColor()].color : theme[themeColor].color}
+			borderBottom={navBg ? "1px" : "none"}
+			borderColor={navBg ? theme[invertThemeColor()].borderColor : "none"}
     >
 			<Container justify="space-between" align="center">
 				<Link
