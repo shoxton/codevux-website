@@ -10,7 +10,7 @@ export const Section = ({children, ...props}) => (
 )
 
 export const SectionHeading = ({heading, text, ...props}) => (
-	<Flex w="full" flexDirection={props.flexDirection || 'column'} mb={{base: 16, lg: 32}} {...props} >
+	<Flex w="full" flexDirection={props.flexDirection || 'column'} mb={{base: 8, lg: 16}} {...props} >
 		<Text
 			textTransform="uppercase"
 			letterSpacing="wide"

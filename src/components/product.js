@@ -4,7 +4,7 @@ import Link from "../gatsby-plugin-chakra-ui/components/link"
 
 const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 	return(
-			<Flex
+			<Box
 				flexDirection="column"
 				p={8}
 				borderRadius="md"
@@ -43,7 +43,7 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 				>
 					Saiba mais
 				</Button>
-			</Flex>
+			</Box>
 
 	)
 }
@@ -51,7 +51,7 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 export const ProductList = ({ products, context, ...props }) => {
 
 	return(
-		<SimpleGrid spacing={4} columns={{base: 1, lg: 3}} {...props}>
+		<SimpleGrid minChildWidth="300px" columns={{base: 1, lg: 3}} spacing={4}>
 			{
 				products?.map((product, index) => (
 						<ProductItem

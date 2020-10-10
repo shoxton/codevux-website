@@ -18,13 +18,12 @@ const ServicePage = ({
 			heroImage,
 			headline,
 			description: {description},
-			product
+			products
 		}
 	},
 	...props
 }) => (
 	<Layout themeColor="dark" >
-		{console.log(props)}
 		<SEO
 			title={title}
 			description={description}
@@ -32,15 +31,15 @@ const ServicePage = ({
 		<Intro
 			headline={headline}
 			intro={description}
+			label={title}
 			themeColor="dark"
 			backgroundImage={heroImage?.fluid.src}
-
 		>
 			{console.log(heroImage)}
 		</Intro>
 		<Container>
 			<Section pt="0!important" mt="-8vh">
-				<ProductList products={product} context={slug} />
+				<ProductList products={products} context={slug} />
 			</Section>
 		</Container>
 	</Layout>

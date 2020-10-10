@@ -4,20 +4,22 @@ import React from 'react'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 
 
-const Intro = ({headline, intro, btnText, to, children, backgroundImage="none", themeColor="light", ...props}) => {
+const Intro = ({headline, intro, label, btnText, to, children, backgroundImage, themeColor="light", ...props}) => {
 
 	const theme = {
 		"light": {
 			bg: "white",
 			heading: "gray.700",
 			intro: "gray.500",
-			btn: "gray"
+			btn: "gray",
+			label: "teal.500"
 		},
 		"dark": {
 			bg: "gray.700",
 			heading: "white",
 			intro: "gray.200",
-			btn: "white"
+			btn: "white",
+			label: "teal.300"
 		}
 	}
 
@@ -28,11 +30,23 @@ const Intro = ({headline, intro, btnText, to, children, backgroundImage="none", 
 			backgroundPosition="right"
 			backgroundSize="contain"
 			backgroundRepeat="no-repeat"
-			backgroundImage={backgroundImage}
+			backgroundImage={`url(${backgroundImage})` || `none`}
 		>
 			<Container minH={props.minH || `50vh`} py="15vh">
 				<SimpleGrid  spacing={4} alignItems="center" columns={{base: 1, lg: 2}}>
 					<Box maxW={{lg:"2xl"}}>
+						{label &&
+							<Heading
+								as="h1"
+								color={theme[themeColor].label}
+								textTransform="uppercase"
+								fontSize="sm"
+								letterSpacing=".25px"
+								mb={2}
+							>
+								{label}
+							</Heading>
+						}
 						<Heading
 							color={theme[themeColor].heading}
 							pb={2}
@@ -52,7 +66,12 @@ const Intro = ({headline, intro, btnText, to, children, backgroundImage="none", 
 							<Button
 								as={Link}
 								to={to}
-								_hover={{textDecoration: 'none', ...Button._hover}}
+								variant={props.variant}
+								variantColor={props.variantColor}
+								color={props.color}
+								size="sm"
+								lineHeight="1.5"
+								_hover={{textDecoration: 'none', ...Button._hover, ...props._hover}}
 							>
 								{btnText}
 							</Button>

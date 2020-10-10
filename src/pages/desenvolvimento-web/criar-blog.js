@@ -15,6 +15,7 @@ export const query = graphql`
 			slug
 			perks
 			headline
+			ctaText
 			description {
 				description
 			}
@@ -28,9 +29,9 @@ export const query = graphql`
 				title
 				description
 			}
-			belongsTo {
+			service {
 				slug
-				product {
+				products {
 					title
 					slug
 					shortDescription

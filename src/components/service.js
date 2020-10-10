@@ -4,7 +4,7 @@ import Img from 'gatsby-image'
 import React from 'react'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 
-const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props}) => {
+const ServiceItem = ({reversed, title, shortDescription, slug, products, ...props}) => {
 
 	return (
 		<Box
@@ -49,7 +49,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props
 						color="gray.700"
 					>
 						{
-							product?.map((product, index) => (
+							products?.map((product, index) => (
 								<ListItem
 									as="h4"
 									key={`${product.slug}-${index}`}
@@ -59,7 +59,6 @@ const ServiceItem = ({reversed, title, shortDescription, slug, product, ...props
 										rightIcon="chevron-right"
 										variant="unstyled"
 										textDecoration="underline"
-										style={{textDecorationStyle: "dotted"}}
 										_hover={{color: "teal.600", ...Button._hover}}
 										fontSize="sm"
 										color="gray.700"
@@ -88,7 +87,7 @@ export const ServiceList = () => {
 					title
 					slug
 					shortDescription
-					product {
+					products {
 						title
 						slug
 					}

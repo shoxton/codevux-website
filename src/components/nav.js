@@ -1,10 +1,11 @@
-import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex } from '@chakra-ui/core'
 import React, { useLayoutEffect, useRef, useState } from 'react'
 import { useStaticQuery } from 'gatsby'
+import { throttle } from 'lodash'
+import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex } from '@chakra-ui/core'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 import NavMobile from './navMobile'
-import { throttle } from 'lodash'
+import { FaBars } from 'react-icons/fa'
 
 // using https://chakra-ui.com/drawer
 
@@ -90,7 +91,7 @@ const Nav = ({location, themeColor="light", ...props}) => {
 					</Flex>
 				</Link>
 				<Button size="sm" variant="outline" display={{ base: "block", lg: "none" }}  onClick={onOpen}>
-					&#9776;
+					<Box as={FaBars} />
 				</Button>
 
 				<NavMenu isInline display={{ base: "none", lg: "flex" }} />
@@ -111,7 +112,8 @@ export const NavMenu = ({children, ...props}) => (
 			to="/contato"
 			as={Link}
 			variantColor="teal"
-			_hover={{textDecoration: 'none'}}
+			size="sm"
+			_hover={{textDecoration: 'none', ...Button._hover}}
 		>
 			Fale conosco
 		</Button>

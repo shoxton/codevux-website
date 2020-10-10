@@ -16,61 +16,36 @@ export const ProductPage = ({
 		contentfulProduct: {
 			title,
 			headline,
+			ctaText,
 			heroImage,
 			description: { description },
 			perks,
 			features,
-			belongsTo,
+			service,
 			modules
 		},
 		...props
 	}
 }) => {
 
-	// const query = useStaticQuery(graphql`
-	// 	query {
-	// 		mobileImage: file(relativePath: { eq: "product_benefits.jpg" }) {
-	// 			childImageSharp {
-	// 				fluid(quality: 80, maxWidth: 700) {
-	// 					...GatsbyImageSharpFluid_withWebp_noBase64
-	// 				}
-	// 			}
-	// 		}
-	// 		desktopImage: file(relativePath: { eq: "product_benefits.jpg" }) {
-	// 			childImageSharp {
-	// 				fluid(quality: 80, maxWidth: 1200) {
-	// 					...GatsbyImageSharpFluid_withWebp_noBase64
-	// 				}
-	// 			}
-	// 		}
-	// 	}
-	// `)
-
-
-	// const imageSources = [
-	// 	query.mobileImage.childImageSharp.fluid,
-	// 	{
-	// 		...query.desktopImage.childImageSharp.fluid,
-	// 		media: `(min-width: 768px)`
-	// 	}
-	// ]
-
-
 	return(
 		<Layout themeColor="light">
-			{console.log(modules)}
+			{console.log(service.slug)}
 			<SEO
-				title={`${title}`}
+				title={ctaText}
 				description={description}
 			/>
 			<Intro
 				headline={headline}
 				intro={description}
-				btnText={`${title}`}
-				to="/contato"
+				label={title}
+				btnText={ctaText}
 				variant="outline"
-				variantColor="gray.700"
-				_hover={{bg: "gray.700", color: "white", textDecoration: "none"}}
+				variantColor="teal"
+				color="teal.500"
+				_hover={{bg: "teal.50"}}
+
+				to="/contato"
 			>
 				<Img
 					alt={heroImage.title}
@@ -108,15 +83,15 @@ export const ProductPage = ({
 				</Container>
 			</Section>
 			<CTA bg="gray.700" color="white" variant="solid" variantColor="teal" />
-			<Section>
-				<Container>
+			<Container>
+				<Section>
 					<SectionHeading
 						heading="Confira outras soluções"
 						text="Não é o que você estava procurando?"
 					/>
-					<ProductList products={belongsTo.product} context={belongsTo.slug} />
-				</Container>
-			</Section>
+					<ProductList products={service[0].products} context={service[0].slug} />
+				</Section>
+			</Container>
 		</Layout>
 	)
 }

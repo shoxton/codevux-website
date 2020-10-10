@@ -20,7 +20,7 @@ export const query = graphql`
 					...GatsbyContentfulFluid_withWebp_noBase64
 				}
 			}
-			product {
+			products {
 				title
 				slug
 				shortDescription
