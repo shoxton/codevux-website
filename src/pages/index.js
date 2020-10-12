@@ -14,10 +14,6 @@ export default (props) => (
 		<Hero />
 		<Container>
 			<Section pt="0!important" mt="-8vh">
-				{/* <SectionHeading
-					heading="Serviços e soluções"
-					text="Nosso objetivo é agregar valor"
-				/> */}
 				<ServiceList id="index-services" />
 			</Section>
 		</Container>
