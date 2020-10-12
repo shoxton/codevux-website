@@ -39,8 +39,8 @@ export const SectionHeading = ({heading, text, ...props}) => (
 
 export const CTA = ({text, btn, action, ...props}) => (
 	<Box
-		bg={props.bg}
-		color={props.color}
+		bg={props.bg || "gray.700"}
+		color={props.color || "white"}
 	>
 		<Container
 			textAlign="center"
@@ -63,8 +63,8 @@ export const CTA = ({text, btn, action, ...props}) => (
 					_hover={{textDecoration: 'none'}}
 					as={Link}
 					to={action || '/contato'}
-					variant={props.variant}
-					variantColor={props.variantColor}
+					variant={props.variant || "solid"}
+					variantColor={props.variantColor || "teal"}
 				>
 					{btn || 'Comece agora'}
 				</Button>
