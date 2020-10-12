@@ -16,65 +16,56 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 			borderTopColor="teal.300"
 			{...props}
 		>
-			<SimpleGrid
-				columns={{base: 1, lg: 1}}
+			<Heading
+				as="h2"
+				fontSize="2xl"
+				fontWeight="medium"
+				pb={{base: 2, lg: 4}}
+				color="gray.700"
 			>
-				<Box
-					order={{base: 2, lg:reversed ? 2: 1}}
+				<Link
+					to={`/${slug}`}
 				>
-					<Heading
-						as="h2"
-						fontSize="2xl"
-						fontWeight="medium"
-						pb={{base: 2, lg: 4}}
-						color="gray.700"
-					>
-						<Link
-							to={`/${slug}`}
+					{title}
+				</Link>
+			</Heading>
+			<Text
+				lineHeight="shorter"
+				pb={{base: 2, lg: 4}}
+				color="gray.600"
+			>
+				{shortDescription}
+			</Text>
+			<List
+				fontSize="lg"
+				letterSpacing="wide"
+				fontFamily="Montserrat"
+				color="gray.700"
+			>
+				{
+					products?.map((product, index) => (
+						<ListItem
+							as="h4"
+							key={`${product.slug}-${index}`}
 						>
-							{title}
-						</Link>
-					</Heading>
-					<Text
-						lineHeight="shorter"
-						pb={{base: 2, lg: 4}}
-						color="gray.600"
-					>
-						{shortDescription}
-					</Text>
-					<List
-						fontSize="lg"
-						letterSpacing="wide"
-						fontFamily="Montserrat"
-						color="gray.700"
-					>
-						{
-							products?.map((product, index) => (
-								<ListItem
-									as="h4"
-									key={`${product.slug}-${index}`}
-								>
-									<Button
-										fontWeight="medium"
-										rightIcon="chevron-right"
-										variant="unstyled"
-										textDecoration="underline"
-										_hover={{color: "teal.600", ...Button._hover}}
-										fontSize="sm"
-										color="gray.700"
-										as={Link}
-										to={`/${slug}/${product.slug}`}
-									>
-										{product.title}
-									</Button>
-								</ListItem>
-							))
-						}
+							<Button
+								fontWeight="medium"
+								rightIcon="chevron-right"
+								variant="unstyled"
+								textDecoration="underline"
+								_hover={{color: "teal.600", ...Button._hover}}
+								fontSize="sm"
+								color="gray.700"
+								as={Link}
+								to={`/${slug}/${product.slug}`}
+							>
+								{product.title}
+							</Button>
+						</ListItem>
+					))
+				}
 
-					</List>
-				</Box>
-				{/* <Img fluid={image.fluid} alt={image.title}/> */}
-			</SimpleGrid>
+			</List>
 		</Box>
 	)
 }
