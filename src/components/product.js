@@ -85,27 +85,30 @@ export const Perks = ({perks}) => (
 	</List>
 )
 export const Features = ({features}) => (
-	<SimpleGrid spacing={{base: 8, lg: 16}} columns={{base: 1, lg: 3}} fontSize={{base: 'xl', lg:'2xl'}}>
+	<SimpleGrid width="100%" spacing={16} minChildWidth="240px" >
 		{
 			features?.map((feature, index) => (
 				<Flex key={`feature-${index}`}
 					align="baseline"
 				>
-					<Icon mr={4} size={4} name="arrow-right" color="teal.500" />
+					<Icon
+						mr={4}
+						size={4}
+						name="arrow-right"
+						color="teal.500"
+					/>
 					<Box>
 						<Heading
 							as="h4"
-							fontSize={{base: 'xl', lg:'xl'}}
+							fontSize="lg"
 							color="gray.700"
 							fontWeight="medium"
-							mb={2}
+							py={2}
 						>
 							{feature.title}
 						</Heading>
 						<Text
 							color="gray.500"
-							fontSize="lg"
-							lineHeight="normal"
 						>
 							{feature.description}
 						</Text>

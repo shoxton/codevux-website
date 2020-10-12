@@ -48,18 +48,20 @@ export default ({
 								key={`feature-${index}`}
 								backgroundColor="white"
 							>
-								<Img fixed={feature.icon.fixed} alt={feature.icon.title} />
+								<Img
+									fixed={feature.icon.fixed}
+									alt={feature.icon.title}
+								/>
 								<Heading
 									as="h2"
 									fontSize="xl"
 									fontWeight="medium"
-									pb={{base: 2, lg: 4}}
+									py={2}
 									color="gray.700"
 								>
 									{feature.title}
 								</Heading>
 								<Text
-									pb={{base: 2, lg: 4}}
 									color="gray.600"
 								>
 									{feature.description}
