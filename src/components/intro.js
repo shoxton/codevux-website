@@ -39,7 +39,7 @@ const Intro = ({
 			pt={20}
 			backgroundColor={backgroundColor ? backgroundColor : theme[themeColor].bg}
 			backgroundPosition="right"
-			backgroundSize="contain"
+			backgroundSize={{base: "cover", lg: "contain"}}
 			backgroundRepeat="no-repeat"
 			backgroundImage={backgroundImage ? `url(${backgroundImage})` : `none`}
 		>
