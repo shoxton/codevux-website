@@ -20,7 +20,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 				as="h2"
 				fontSize="2xl"
 				fontWeight="medium"
-				pb={{base: 2, lg: 4}}
+				pb={2}
 				color="gray.700"
 			>
 				<Link
@@ -31,7 +31,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 			</Heading>
 			<Text
 				lineHeight="shorter"
-				pb={{base: 2, lg: 4}}
+				pb={2}
 				color="gray.600"
 			>
 				{shortDescription}
