@@ -35,7 +35,6 @@ const ServicePage = ({
 			themeColor="dark"
 			backgroundImage={heroImage?.fluid.src}
 		>
-			{console.log(heroImage)}
 		</Intro>
 		<Container>
 			<Section pt="0!important" mt="-8vh">

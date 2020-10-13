@@ -30,7 +30,6 @@ export const ProductPage = ({
 
 	return(
 		<Layout themeColor="light">
-			{console.log(service.slug)}
 			<SEO
 				title={ctaText}
 				description={description}

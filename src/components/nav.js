@@ -52,7 +52,6 @@ const Nav = ({location, themeColor="light", ...props}) => {
 
 	useLayoutEffect(() => {
 		const handleScroll = () => {
-			console.log("executed")
 			const show = window.scrollY > 120
 			if(navRef.current !== show) {
 				setNavBg(show)

@@ -24,7 +24,6 @@ export default ({
 		<Layout
 			themeColor="light"
 		>
-			{console.log(props.data)}
 			<SEO
 				title={title}
 				description={description.description}
