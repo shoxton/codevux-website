@@ -9,7 +9,7 @@ import { FaBars } from 'react-icons/fa'
 
 // using https://chakra-ui.com/drawer
 
-const Nav = ({location, themeColor="light", ...props}) => {
+const Nav = ({location, themeColor="light", sticky=false, ...props}) => {
 
 	const theme = {
 		"light": {
@@ -51,16 +51,19 @@ const Nav = ({location, themeColor="light", ...props}) => {
 	`)
 
 	useLayoutEffect(() => {
-		const handleScroll = () => {
-			const show = window.scrollY > 120
-			if(navRef.current !== show) {
-				setNavBg(show)
+
+			const handleScroll = () => {
+				const show = window.scrollY > 120
+				if(navRef.current !== show) {
+					setNavBg(show)
+				}
 			}
-		}
-		document.addEventListener('scroll', throttle(handleScroll, 200))
-		return () => {
-			document.removeEventListener('scroll', handleScroll)
-		}
+			if (sticky) {
+				document.addEventListener('scroll', throttle(handleScroll, 200))
+				return () => {
+					document.removeEventListener('scroll', handleScroll)
+				}
+			}
 	})
 
   return (
@@ -69,7 +72,7 @@ const Nav = ({location, themeColor="light", ...props}) => {
 			width="100%"
 			py={4}
 			bg={navBg ? theme[invertThemeColor()].bg : "transparent"}
-			pos="fixed"
+			pos={sticky ? "fixed" : "relative"}
 			zIndex="sticky"
 			color={navBg ? theme[invertThemeColor()].color : theme[themeColor].color}
 			borderBottom={navBg ? "1px" : "none"}
