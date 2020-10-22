@@ -1,28 +1,8 @@
 import React from 'react'
 import { graphql } from "gatsby"
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import { Box, Heading } from '@chakra-ui/core'
+import BlogPost from '../components/blog-post'
 
-const Post = ({ data: {
-	post,
-	nextPost,
-	prevPost
-} }) => {
-
-	return (
-		<Layout>
-
-			<SEO title={post.title} />
-
-			<Heading>{post.title}</Heading>
-			<Box dangerouslySetInnerHTML={{__html: post.content}} />
-
-		</Layout>
-	)
-}
-
-export default Post
+export default ({data}) => <BlogPost data={data} />
 
 export const query = graphql`
 
@@ -30,6 +10,26 @@ export const query = graphql`
 		post: wpPost(id: { eq: $id }) {
 			title
 			content
+			featuredImage {
+        node {
+          localFile {
+            ...FeaturedImage
+          }
+        }
+      }
+			author {
+				node {
+					name
+				}
+			}
+			fromNowDate: dateGmt(fromNow: true, locale: "pt-BR")
+    	formattedDate: dateGmt(locale: "pt-BR", formatString: "DD/MM/YYYY")
+			tags {
+				nodes {
+					name
+					id
+				}
+			}
 		}
 		nextPost: wpPost(id: { eq: $nextPost }) {
 			title

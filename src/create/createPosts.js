@@ -47,7 +47,7 @@ module.exports = async ( {actions, graphql }, options) => {
 				context: {
 					id,
 					nextPost: (post[index + 1] || {}).id,
-          prevPost: (post[index - 1] || {}).id,
+          			prevPost: (post[index - 1] || {}).id,
 				 }
 			})
 		})
