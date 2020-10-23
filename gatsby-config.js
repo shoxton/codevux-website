@@ -64,7 +64,18 @@ module.exports = {
 				// Learn about environment variables: https://gatsby.dev/env-vars
 				accessToken: process.env.CONTENTFUL_ACCESS_TOKEN,
 			},
-		}
+    },
+    {
+      resolve: "gatsby-plugin-google-tagmanager",
+      options: {
+        id: process.env.GOOGLE_TAGMANAGER_ID,
+
+        // Include GTM in development.
+        //
+        // Defaults to false meaning GTM will only be loaded in production.
+        includeInDevelopment: false,
+      },
+    }
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
