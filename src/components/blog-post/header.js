@@ -83,6 +83,6 @@ export const FeaturedImage = ({featuredImage}) => (
 		overflow="hidden"
 		borderRadius="md"
 	>
-		<Img fluid={featuredImage.node.localFile.childImageSharp.fluid} />
+		<Img fluid={featuredImage?.node?.localFile?.childImageSharp?.fluid} />
 	</Box>
 )

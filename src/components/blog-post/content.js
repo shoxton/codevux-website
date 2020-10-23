@@ -16,19 +16,22 @@ export default ({content, ...props}) => {
 
 export const ContentNav = ({content, ...props}) => {
 
-	const parser = new DOMParser()
+	// USE GATSBY PLUGIN INSTEAD
 
-	// get all h2 tags with an id
-	const headings = content.match(/<h2 ([\s\S]*?)>([\s\S]*?)<\/h2>/g)
+	// const parser = new DOMParser()
 
-	// parse string to html and return needed attributes
-	const topics = headings?.map(heading => {
-		let parsedHeading = parser.parseFromString(heading, 'text/html').getElementsByTagName('h2')[0]
-		return {
-			text: parsedHeading.innerHTML,
-			id: parsedHeading.id
-		}
-	}) || []
+	// // get all h2 tags with an id
+	// const headings = content.match(/<h2 ([\s\S]*?)>([\s\S]*?)<\/h2>/g)
+
+	// // parse string to html and return needed attributes
+	// const topics = headings?.map(heading => {
+	// 	let parsedHeading = parser.parseFromString(heading, 'text/html').getElementsByTagName('h2')[0]
+	// 	return {
+	// 		text: parsedHeading.innerHTML,
+	// 		id: parsedHeading.id
+	// 	}
+	// }) || []
+	const topics = []
 
 	return(
 

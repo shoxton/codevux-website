@@ -27,6 +27,7 @@ const ServicePage = ({
 		<SEO
 			title={title}
 			description={description}
+			image={heroImage?.fluid}
 		/>
 		<Intro
 			headline={headline}

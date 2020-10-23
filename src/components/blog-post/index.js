@@ -11,7 +11,7 @@ import { Flex, Box, Grid } from '@chakra-ui/core'
 
 const BlogPost = ({data}) => {
 
-	const { title, content } = data.post
+	const { title, excerpt, content, featuredImage } = data.post
 
 	// const toSlug = GithubSlugger.slug
 
@@ -25,7 +25,12 @@ const BlogPost = ({data}) => {
 
 	return(
 		<Layout>
-			<SEO title={title}  />
+			<SEO
+				title={title}
+				type="article"
+				description={excerpt}
+				image={featuredImage?.node?.localFile?.childImageSharp?.fluid}
+			/>
 			<Container pt="8vh" position="relative">
 				<Grid templateColumns={{md: '1fr', lg: '180px 1fr'}} >
 					<ContentNav content={content} />

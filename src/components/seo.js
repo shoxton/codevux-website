@@ -12,29 +12,41 @@ import { Helmet } from "react-helmet"
 import { useStaticQuery, graphql } from "gatsby"
 import { useLocation } from "@reach/router"
 
-function SEO({ title, description, lang, meta }) {
+function SEO({ title, description, image, type, lang, meta }) {
 
 	const { pathname } = useLocation()
 
 	const isRootPath = pathname === '/'
 
-  const { site } = useStaticQuery(
+  const { site: {
+		siteMetadata: {
+			defaultTitle,
+			longTitle,
+			defaultDescription,
+			defaultImage,
+			siteUrl,
+			author
+		}
+	} } = useStaticQuery(
     graphql`
       query {
         site {
           siteMetadata {
-            title
-            description
+						defaultTitle: title
+						longTitle
+						defaultDescription: description
+						defaultImage: image
+						siteUrl
             author
           }
         }
       }
     `
   )
-
-	const defaultTitle = site.siteMetadata.longTitle
-	const defaultTitleTemplate = !isRootPath ? `%s | ${site.siteMetadata.title}` : defaultTitle
-  const metaDescription = description || site.siteMetadata.description
+	const titleTemplate = !isRootPath ? `%s | ${title}` : longTitle
+	const metaDescription = description || defaultDescription
+	const ogImage = `${siteUrl}${image || defaultImage}`
+	const ogUrl = `${siteUrl}${pathname}`
 
   return (
     <Helmet
@@ -42,11 +54,15 @@ function SEO({ title, description, lang, meta }) {
         lang,
       }}
       title={title || defaultTitle}
-      titleTemplate={defaultTitleTemplate}
+      titleTemplate={titleTemplate}
       meta={[
         {
           name: `description`,
           content: metaDescription,
+        },
+        {
+          property: `og:url`,
+          content: ogUrl,
         },
         {
           property: `og:title`,
@@ -57,8 +73,12 @@ function SEO({ title, description, lang, meta }) {
           content: metaDescription,
         },
         {
+          property: `og:image`,
+          content: ogImage,
+        },
+        {
           property: `og:type`,
-          content: `website`,
+          content: type,
         },
         {
           name: `twitter:card`,
@@ -66,7 +86,7 @@ function SEO({ title, description, lang, meta }) {
         },
         {
           name: `twitter:creator`,
-          content: site.siteMetadata.author,
+          content: author,
         },
         {
           name: `twitter:title`,
@@ -82,13 +102,15 @@ function SEO({ title, description, lang, meta }) {
 }
 
 SEO.defaultProps = {
-  lang: `pt-BR`,
+	lang: `pt-BR`,
+	type: `website`,
   meta: [],
   description: ``,
 }
 
 SEO.propTypes = {
   description: PropTypes.string,
+  type: PropTypes.string,
   lang: PropTypes.string,
   meta: PropTypes.arrayOf(PropTypes.object),
   title: PropTypes.string,

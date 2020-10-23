@@ -11,6 +11,8 @@ module.exports = {
 		title: `Codevux`,
 		longTitle: `Codevux | Desenvolvimento Web`,
     description: `Desenvolvimento de sites, lojas virtuais, blogs e sistemas personalizados. Desenvolvemos soluções que impactam você, seu negócio e seu cliente.`,
+		image: '/images/default-image.png',
+		siteUrl: 'https://codevux.com',
 		author: `@codevux`,
 		contact: {
 			phone: `51999793218`,

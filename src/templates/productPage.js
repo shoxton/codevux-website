@@ -33,6 +33,7 @@ export const ProductPage = ({
 			<SEO
 				title={ctaText}
 				description={description}
+				image={heroImage?.fluid}
 			/>
 			<Intro
 				headline={headline}
@@ -47,8 +48,8 @@ export const ProductPage = ({
 				to="/contato"
 			>
 				<Img
-					alt={heroImage.title}
-					fluid={heroImage.fluid}
+					alt={heroImage?.title}
+					fluid={heroImage?.fluid}
 				/>
 			</Intro>
 			<Section bg="gray.50">

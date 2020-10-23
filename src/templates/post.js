@@ -9,6 +9,7 @@ export const query = graphql`
 	query post($id: String!, $nextPost: String, $prevPost: String) {
 		post: wpPost(id: { eq: $id }) {
 			title
+			excerpt
 			content
 			featuredImage {
         node {
