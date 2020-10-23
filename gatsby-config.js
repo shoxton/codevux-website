@@ -4,6 +4,7 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
+		siteUrl: `https://codevux.com`,
 		title: `Codevux`,
 		longTitle: `Codevux | Desenvolvimento Web`,
     description: `Desenvolvimento de sites, lojas virtuais, blogs e sistemas personalizados. Desenvolvemos soluções que impactam você, seu negócio e seu cliente.`,
@@ -66,7 +67,7 @@ module.exports = {
 			},
     },
     {
-      resolve: "gatsby-plugin-google-tagmanager",
+      resolve: `gatsby-plugin-google-tagmanager`,
       options: {
         id: process.env.GOOGLE_TAGMANAGER_ID,
 
@@ -75,7 +76,17 @@ module.exports = {
         // Defaults to false meaning GTM will only be loaded in production.
         includeInDevelopment: false,
       },
-    }
+		},
+		{
+			resolve: `gatsby-plugin-sitemap`,
+			options: {
+				exclude: [
+					`/dev-404-page`,
+					`/404`,
+					`/404.html`,
+				]
+			}
+		}
     // this (optional) plugin enables Progressive Web App + Offline functionality
     // To learn more, visit: https://gatsby.dev/offline
     // `gatsby-plugin-offline`,
