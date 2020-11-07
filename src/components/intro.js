@@ -1,4 +1,4 @@
-import { Box, Button, Heading, Text, SimpleGrid } from '@chakra-ui/core'
+import { Box, Button, Heading, Text, Grid } from '@chakra-ui/core'
 import { Link } from 'gatsby'
 import React from 'react'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
@@ -44,7 +44,7 @@ const Intro = ({
 			backgroundImage={backgroundImage ? `url(${backgroundImage})` : `none`}
 		>
 			<Container minH={props.minH || `50vh`} py="15vh">
-				<SimpleGrid  spacing={4} alignItems="center" columns={{base: 1, lg: 2}}>
+				<Grid spacing={4} alignItems="center" gridTemplateColumns={props.columns || `1fr 1fr`}>
 					<Box maxW={{lg:"2xl"}}>
 						{label &&
 							<Heading
@@ -91,7 +91,7 @@ const Intro = ({
 					<Box>
 						{children}
 					</Box>
-				</SimpleGrid>
+				</Grid>
 			</Container>
 			</Box>
 	)
