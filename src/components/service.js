@@ -48,6 +48,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 							as="h4"
 							key={`${product.slug}-${index}`}
 						>
+							{product.hasLandingPage &&
 							<Button
 								fontWeight="medium"
 								rightIcon="chevron-right"
@@ -61,6 +62,19 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 							>
 								{product.title}
 							</Button>
+							}
+							{!product.hasLandingPage &&
+
+							<Heading
+								as="p"
+								fontSize="sm"
+								fontWeight="medium"
+							>
+								{product.title}
+							</Heading>
+
+							}
+
 						</ListItem>
 					))
 				}
@@ -81,6 +95,7 @@ export const ServiceList = () => {
 					products {
 						title
 						slug
+						hasLandingPage
 					}
 				}
 			}
