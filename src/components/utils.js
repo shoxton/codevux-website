@@ -17,23 +17,22 @@ export const SectionHeading = ({heading, text, ...props}) => (
 			lineHeight="shorter"
 			fontSize={{base: 'sm', lg: 'xl'}}
 			color="gray.500"
+			textAlign="center"
 		>
 			{ text }
 		</Text>
-		<Stack isInline align="baseline">
+		<Stack textAlign="center" align="center">
 			<Heading
 				as="h2"
 				maxW="lg"
-				fontWeight="medium"
+				fontWeight="bold"
 				color="gray.700"
 				fontSize={{base: '2xl', lg: '4xl'}}
 			>
 				{ heading }
 			</Heading>
-			<Divider display={{base: 'none', lg: 'block'}}  flex="1" border="1px" />
+			<Divider width={16} border="1px" />
 		</Stack>
-
-		<Divider maxW={32} display={{base: 'block', lg: 'none'}} border="1px" />
 	</Flex>
 )
 
