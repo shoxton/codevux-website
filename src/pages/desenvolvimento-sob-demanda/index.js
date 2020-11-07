@@ -8,7 +8,7 @@ export default (props) => (
 
 export const query = graphql`
 	{
-		contentfulService(slug: {eq: "integracao-de-sistemas"}) {
+		contentfulService(slug: {eq: "desenvolvimento-sob-demanda"}) {
 			title
 			slug
 			headline
@@ -24,6 +24,7 @@ export const query = graphql`
 				title
 				slug
 				shortDescription
+				hasLandingPage
 			}
 		}
 	}

@@ -8,13 +8,14 @@ export default (props) => (
 
 
 
+
 export const query = graphql`
 	{
-		contentfulProduct (slug: {eq: "criar-blog"})  {
+		contentfulProduct (slug: {eq: "criar-site"})  {
 			title
 			slug
-			perks
 			metaTitle
+			perks
 			headline
 			ctaText
 			description {

@@ -11,9 +11,10 @@ export default (props) => (
 
 export const query = graphql`
 	{
-		contentfulProduct (slug: {eq: "integrar-transportadoras"})  {
+		contentfulProduct (slug: {eq: "integrar-meios-de-pagamento"})  {
 			title
 			slug
+			metaTitle
 			perks
 			headline
 			ctaText

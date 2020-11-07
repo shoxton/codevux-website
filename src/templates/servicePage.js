@@ -35,6 +35,7 @@ const ServicePage = ({
 			themeColor="dark"
 			backgroundImage={heroImage?.fluid.src}
 			btnText="Fale conosco"
+			columns="2fr 1fr"
 			to="/contato"
 		>
 		</Intro>

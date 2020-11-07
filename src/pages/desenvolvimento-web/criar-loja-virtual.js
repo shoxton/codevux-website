@@ -13,6 +13,7 @@ export const query = graphql`
 		contentfulProduct (slug: {eq: "criar-loja-virtual"})  {
 			title
 			slug
+			metaTitle
 			perks
 			headline
 			ctaText

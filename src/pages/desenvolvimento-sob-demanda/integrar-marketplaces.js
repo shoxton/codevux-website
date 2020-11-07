@@ -14,6 +14,7 @@ export const query = graphql`
 		contentfulProduct (slug: {eq: "integrar-marketplaces"})  {
 			title
 			slug
+			metaTitle
 			perks
 			headline
 			ctaText
