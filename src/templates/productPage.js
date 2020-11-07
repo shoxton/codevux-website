@@ -9,12 +9,15 @@ import { CTA, SectionHeading } from "../components/utils"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
 import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout'
+import ServiceNav from '../components/serviceNav'
 
 
 export const ProductPage = ({
 	data: {
 		contentfulProduct: {
 			title,
+			slug,
+			metaTitle,
 			headline,
 			ctaText,
 			heroImage,
@@ -31,9 +34,10 @@ export const ProductPage = ({
 	return(
 		<Layout themeColor="light">
 			<SEO
-				title={ctaText}
+				title={metaTitle}
 				description={description}
 			/>
+			<ServiceNav current={slug} service={service[0]} />
 			<Intro
 				headline={headline}
 				intro={description}
