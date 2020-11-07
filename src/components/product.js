@@ -2,7 +2,7 @@ import React from "react"
 import { Box, Icon, Heading, Text, Button, SimpleGrid, Flex, List, ListItem, ListIcon } from "@chakra-ui/core"
 import Link from "../gatsby-plugin-chakra-ui/components/link"
 
-const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
+const ProductItem = ({context, title, slug, shortDescription, hasLandingPage, ...props}) => {
 	return(
 			<Box
 				flexDirection="column"
@@ -13,17 +13,32 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 				borderTop="4px"
 				borderTopColor="teal.300"
 				>
-				<Link to={`/${context}/${slug}`}>
+					{hasLandingPage &&
+					<Link to={`/${context}/${slug}`}>
+						<Heading
+							as="h2"
+							fontSize="2xl"
+							fontWeight="medium"
+							color="gray.700"
+							mb={2}
+						>
+							{title}
+						</Heading>
+					</Link>
+					}
+					{!hasLandingPage &&
+
 					<Heading
 						as="h2"
 						fontSize="2xl"
 						fontWeight="medium"
 						color="gray.700"
 						mb={2}
-					>
+						>
 						{title}
 					</Heading>
-				</Link>
+
+					}
 				<Text
 					mb={2}
 					color="gray.600"
@@ -31,6 +46,7 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 				>
 				{shortDescription}
 				</Text>
+				{hasLandingPage &&
 				<Button
 					color="gray.700"
 					as={Link}
@@ -44,6 +60,7 @@ const ProductItem = ({context, title, slug, shortDescription, ...props}) => {
 				>
 					Saiba mais
 				</Button>
+				}
 			</Box>
 
 	)
