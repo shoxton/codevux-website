@@ -1,10 +1,10 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import Intro from '../../components/intro'
-import Layout from '../../components/layout'
-import SEO from '../../components/seo'
-import { CTA, Section } from '../../components/utils'
-import Container from '../../gatsby-plugin-chakra-ui/components/container'
+import Intro from '../components/intro'
+import Layout from '../components/layout'
+import SEO from '../components/seo'
+import { CTA, Section } from '../components/utils'
+import Container from '../gatsby-plugin-chakra-ui/components/container'
 import { SimpleGrid, Text, Heading, Box } from '@chakra-ui/core'
 
 
@@ -70,14 +70,14 @@ export default ({
 					</SimpleGrid>
 				</Section>
 			</Container>
-			<CTA text="Precisa de ajuda na sua loja Magento?" btn="Fale conosco" />
+			<CTA text="Precisa de ajuda com seu site Wordpress?" btn="Fale conosco" />
 		</Layout>
 	)
 }
 
 export const query = graphql`
 	{
-		contentfulSolution(slug: {eq: "magento"}) {
+		contentfulSolution(slug: {eq: "wordpress"}) {
 			slug
 			title
 			description {

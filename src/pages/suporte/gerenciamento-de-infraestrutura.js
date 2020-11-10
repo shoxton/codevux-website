@@ -37,6 +37,7 @@ export const query = graphql`
 					title
 					slug
 					shortDescription
+					hasLandingPage
 				}
 			}
 			modules {

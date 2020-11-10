@@ -42,7 +42,6 @@ const ProductItem = ({context, title, slug, shortDescription, hasLandingPage, ..
 				<Text
 					mb={2}
 					color="gray.600"
-					lineHeight="shorter"
 				>
 				{shortDescription}
 				</Text>

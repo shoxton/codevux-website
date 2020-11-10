@@ -1,26 +1,26 @@
 import { Box, Button, Heading, SimpleGrid, Text } from '@chakra-ui/core'
-import Img from 'gatsby-image'
+import * as FaIcons from 'react-icons/fa'
 import { useStaticQuery } from 'gatsby'
 import React from 'react'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 
-export const SolutionItem = ({title, logo, slug, shortDescription}) => (
+export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 	<Box
 		p={8}
 		bg="gray.700"
 		borderRadius="md"
 		boxShadow="md"
 	>
-		<Img fixed={logo.fixed} alt={logo.title} />
+		<Box as={FaIcons[icon]} size="2.5rem" color="#fff" />
 		<Heading
 			as="h4"
-			fontSize="2xl"
+			fontSize={{base: 'xl', lg: '2xl'}}
 			fontWeight="medium"
 			color="white"
 			py={2}
 		>
 			<Link
-				to={`/${slug}`}
+				to={slug}
 			>
 				{title}
 			</Link>
@@ -56,12 +56,7 @@ export const SolutionList = () => {
 					title
 					slug
 					shortDescription
-					logo {
-						fixed (height: 36, width: 36, quality: 80) {
-							...GatsbyContentfulFixed_withWebp_noBase64
-						}
-						title
-					}
+					icon
 				}
 			}
 		}

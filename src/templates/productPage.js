@@ -21,6 +21,7 @@ export const ProductPage = ({
 			headline,
 			ctaText,
 			heroImage,
+			hasLandingPage,
 			description: { description },
 			perks,
 			features,
@@ -37,7 +38,7 @@ export const ProductPage = ({
 				title={metaTitle}
 				description={description}
 			/>
-			<ServiceNav current={slug} service={service[0]} />
+			{/* <ServiceNav current={slug} service={service[0]} /> */}
 			<Intro
 				headline={headline}
 				intro={description}
