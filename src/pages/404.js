@@ -6,7 +6,6 @@ import SEO from "../components/seo"
 import { Section } from "../components/utils"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
 import Link from "../gatsby-plugin-chakra-ui/components/link"
-import notFoundIcon from '../images/404.svg'
 
 const NotFoundPage = () => (
   <Layout>
@@ -17,7 +16,7 @@ const NotFoundPage = () => (
 					textAlign="center"
 					mx="auto"
 				>
-					<Image mx="auto" height="256px" src={notFoundIcon} />
+					<Image mx="auto" height="256px" src={'/images/404.svg'} />
 					<Heading
 						as="h2"
 						fontSize="2xl"

@@ -37,6 +37,7 @@ export const ProductPage = ({
 			<SEO
 				title={metaTitle}
 				description={description}
+				image={heroImage?.fluid?.src}
 			/>
 			{/* <ServiceNav current={slug} service={service[0]} /> */}
 			<Intro

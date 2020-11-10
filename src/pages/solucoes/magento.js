@@ -1,10 +1,10 @@
 import React from 'react'
 import Img from 'gatsby-image'
-import Intro from '../components/intro'
-import Layout from '../components/layout'
-import SEO from '../components/seo'
-import { CTA, Section } from '../components/utils'
-import Container from '../gatsby-plugin-chakra-ui/components/container'
+import Intro from '../../components/intro'
+import Layout from '../../components/layout'
+import SEO from '../../components/seo'
+import { CTA, Section } from '../../components/utils'
+import Container from '../../gatsby-plugin-chakra-ui/components/container'
 import { SimpleGrid, Text, Heading, Box } from '@chakra-ui/core'
 
 
@@ -27,6 +27,7 @@ export default ({
 			<SEO
 				title={title}
 				description={description.description}
+				image={heroImage?.fluid?.src}
 			/>
 			<Intro
 				headline={headline}

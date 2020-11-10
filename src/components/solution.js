@@ -20,7 +20,7 @@ export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 			py={2}
 		>
 			<Link
-				to={slug}
+				to={`/solucoes/${slug}`}
 			>
 				{title}
 			</Link>
@@ -41,7 +41,7 @@ export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 			letterSpacing=".25px"
 			size="sm"
 			rightIcon="chevron-right"
-			to={slug}
+			to={`/solucoes/${slug}`}
 		>
 			Saiba mais
 		</Button>

@@ -56,10 +56,10 @@ const NavMobile = (props) => {
 						</Stack>
 					</Box>
 					<Box pb={4}>
-						<Link fontWeight="bold" to="/magento">Soluções em Magento </Link>
+						<Link fontWeight="bold" to="/solucoes/magento">Soluções em Magento </Link>
 					</Box>
 					<Box pb={4}>
-						<Link fontWeight="bold" to="/wordpress">Soluções em Wordpress</Link>
+						<Link fontWeight="bold" to="/solucoes/wordpress">Soluções em Wordpress</Link>
 					</Box>
 				</Box>
 				<Button

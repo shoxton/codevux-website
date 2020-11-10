@@ -176,8 +176,8 @@ export const NavMenu = () => (
 					<MenuItem as={Link} to="/suporte/consultoria">Consultoria</MenuItem>
 				</Box>
 			</MenuGroup>
-			<MenuGroup as={Link} to="/magento" title="Soluções em Magento" />
-			<MenuGroup as={Link} to="/wordpress" title="Soluções em Wordpress" />
+			<MenuGroup as={Link} to="/solucoes/magento" title="Soluções em Magento" />
+			<MenuGroup as={Link} to="/solucoes/wordpress" title="Soluções em Wordpress" />
 		</MenuList>
 	</Menu>
 )
