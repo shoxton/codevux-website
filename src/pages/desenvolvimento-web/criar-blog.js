@@ -14,6 +14,7 @@ export const query = graphql`
 			title
 			slug
 			perks
+			metaTitle
 			headline
 			ctaText
 			description {
@@ -35,6 +36,7 @@ export const query = graphql`
 					title
 					slug
 					shortDescription
+					hasLandingPage
 				}
 			}
 			modules {

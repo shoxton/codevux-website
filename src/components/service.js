@@ -18,7 +18,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 		>
 			<Heading
 				as="h2"
-				fontSize="2xl"
+				fontSize={{base: 'xl', lg: '2xl'}}
 				fontWeight="medium"
 				pb={2}
 				color="gray.700"
@@ -30,7 +30,6 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 				</Link>
 			</Heading>
 			<Text
-				lineHeight="shorter"
 				pb={2}
 				color="gray.600"
 			>
@@ -48,6 +47,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 							as="h4"
 							key={`${product.slug}-${index}`}
 						>
+							{product.hasLandingPage &&
 							<Button
 								fontWeight="medium"
 								rightIcon="chevron-right"
@@ -61,6 +61,19 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 							>
 								{product.title}
 							</Button>
+							}
+							{!product.hasLandingPage &&
+
+							<Heading
+								as="p"
+								fontSize="sm"
+								fontWeight="medium"
+							>
+								{product.title}
+							</Heading>
+
+							}
+
 						</ListItem>
 					))
 				}
@@ -73,7 +86,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 export const ServiceList = () => {
   const {allContentfulService:{ nodes }} = useStaticQuery(graphql`
     {
-			allContentfulService {
+			allContentfulService(sort: {fields: createdAt})  {
 				nodes {
 					title
 					slug
@@ -81,6 +94,7 @@ export const ServiceList = () => {
 					products {
 						title
 						slug
+						hasLandingPage
 					}
 				}
 			}

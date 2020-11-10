@@ -149,24 +149,35 @@ export const NavMenu = () => (
 				title="Desenvolvimento Web"
 			>
 				<Box borderLeft="1px" borderLeftColor="gray.300" mx={4} mb={4} >
-					<MenuItem as={Link} to="/desenvolvimento-web/criar-site-institucional">Site institucional</MenuItem>
-					<MenuItem as={Link} to="/desenvolvimento-web/criar-loja-virtual">Loja virtual</MenuItem>
-					<MenuItem as={Link} to="/desenvolvimento-web/criar-blog">Blog</MenuItem>
+					<MenuItem as={Link} to="/desenvolvimento-web/criar-site">Criar Site</MenuItem>
+					<MenuItem as={Link} to="/desenvolvimento-web/criar-loja-virtual">Criar Loja virtual</MenuItem>
+					<MenuItem as={Link} to="/desenvolvimento-web/criar-blog">Criar Blog</MenuItem>
 				</Box>
 			</MenuGroup>
 			<MenuGroup
 				as={Link}
-				to="/integracao-de-sistemas"
-				title="Integração de sistemas"
+				to="/desenvolvimento-sob-demanda"
+				title="Desenvolvimento sob demanda"
 			>
 				<Box borderLeft="1px" borderLeftColor="gray.300" mx={4} mb={4} >
-					<MenuItem as={Link} to="/integracao-de-sistemas/integrar-marketplaces">Marketplaces</MenuItem>
-					<MenuItem as={Link} to="/integracao-de-sistemas/integrar-meios-de-pagamento">Meios de pagamento</MenuItem>
-					<MenuItem as={Link} to="/integracao-de-sistemas/integrar-transportadoras">Transportadoras</MenuItem>
+					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/sistema-personalizado">Criar Sistema Personalizado</MenuItem>
+					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/integrar-marketplaces">Integrar Marketplaces</MenuItem>
+					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/integrar-meios-de-pagamento">Integrar Meios de pagamento</MenuItem>
+					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/integrar-transportadoras">Integrar Transportadoras</MenuItem>
 				</Box>
 			</MenuGroup>
-			<MenuGroup as={Link} to="/suporte" title="Suporte e consultoria" />
+			<MenuGroup
+				as={Link}
+				to="/suporte"
+				title="Suporte"
+			>
+				<Box borderLeft="1px" borderLeftColor="gray.300" mx={4} mb={4} >
+					<MenuItem as={Link} to="/suporte/gerenciamento-de-infraestrutura">Gerenciamento de infraestrutura</MenuItem>
+					<MenuItem as={Link} to="/suporte/consultoria">Consultoria</MenuItem>
+				</Box>
+			</MenuGroup>
 			<MenuGroup as={Link} to="/magento" title="Soluções em Magento" />
+			<MenuGroup as={Link} to="/wordpress" title="Soluções em Wordpress" />
 		</MenuList>
 	</Menu>
 )

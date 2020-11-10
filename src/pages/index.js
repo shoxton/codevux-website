@@ -6,7 +6,7 @@ import { ServiceList } from "../components/service"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
 import { Section, SectionHeading } from "../components/utils"
 import { SolutionList } from '../components/solution'
-import { Heading } from '@chakra-ui/core'
+import { Divider, Text, Stack, Heading } from '@chakra-ui/core'
 
 export default (props) => (
 	<Layout themeColor="dark">
@@ -15,10 +15,36 @@ export default (props) => (
 		/>
 		<Hero />
 		<Container>
-			<Section pt="0!important" mt="-8vh">
+			<Section pt="0!important" mt="-12vh">
+				<Stack mb={4} align="center" isInline>
+						<Heading
+							fontSize="md"
+							as="p"
+							fontWeight="medium"
+							color="gray.400"
+							textTransform="uppercase"
+							letterSpacing=".25px"
+						>
+							Serviços
+						</Heading>
+						<Divider borderColor="gray.600" flex="1" />
+				</Stack>
 				<ServiceList />
 			</Section>
-			<Section pt="0!important" mt="-8vh">
+			<Section pt="0!important">
+				<Stack mb={4} align="center" isInline>
+					<Heading
+						fontSize="md"
+						as="p"
+						fontWeight="medium"
+						color="gray.500"
+						textTransform="uppercase"
+						letterSpacing=".25px"
+					>
+						Soluções
+					</Heading>
+					<Divider borderColor="gray.300" flex="1" />
+				</Stack>
 				<SolutionList />
 			</Section>
 		</Container>
