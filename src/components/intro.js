@@ -67,7 +67,6 @@ const Intro = ({
 							{headline}
 						</Heading>
 						<Text
-							lineHeight="shorter"
 							fontSize={{base: 'lg', lg: 'xl'}}
 							pb={4}
 							color={theme[themeColor].intro}

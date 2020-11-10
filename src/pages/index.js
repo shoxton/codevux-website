@@ -31,7 +31,7 @@ export default (props) => (
 				</Stack>
 				<ServiceList />
 			</Section>
-			<Section pt="0!important">
+			<Section pt="0!important" mt={{lg: -16}}>
 				<Stack mb={4} align="center" isInline>
 					<Heading
 						fontSize="md"

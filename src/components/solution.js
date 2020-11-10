@@ -27,7 +27,6 @@ export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 		</Heading>
 		<Text
 			color="gray.300"
-			lineHeight="shorter"
 			pb={2}
 		>
 			{shortDescription}
