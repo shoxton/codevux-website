@@ -23,6 +23,7 @@ export default (props) => {
 	}
 
 	const { contact, social } = props.data.site.siteMetadata
+	const wpEncodedMessage = `Ol%C3%A1!%20Gostaria%20de%20esclarecer%20algumas%20d%C3%BAvidas%20com%20a%20Codevux.`
 
 	return(
 		<>
@@ -74,7 +75,8 @@ export default (props) => {
 										color="currentColor"
 									/>
 									<Link
-										href={`tel:${contact.phone}`}
+										href={WPClickToChatLink(contact.phone, wpEncodedMessage)}
+										target="_blank"
 									>
 										{contact.phone}
 									</Link>
@@ -119,6 +121,10 @@ export default (props) => {
 	)
 
 }
+
+export const WPClickToChatLink = (phone, message) => (
+	`https://wa.me/${phone}?text=${message}`
+)
 
 export const ContactQuery = graphql`
 	query ContactQuery {
