@@ -19,7 +19,7 @@ const Image = () => {
       placeholderImage: file(relativePath: { eq: "rise_up.jpeg" }) {
         childImageSharp {
 					fluid(quality: 80, maxHeight: 300) {
-						...GatsbyImageSharpFluid_withWebp_noBase64
+						...GatsbyImageSharpFluid_withWebp
 					}
         }
       }

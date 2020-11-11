@@ -90,13 +90,13 @@ export const query = graphql`
 				description
 				icon {
 					fixed (height: 64, width: 64, quality: 80) {
-						...GatsbyContentfulFixed_withWebp_noBase64
+						...GatsbyContentfulFixed_withWebp
 					}
 				}
 			}
 			heroImage {
 				fluid (maxHeight: 400, quality: 80) {
-					...GatsbyContentfulFluid_withWebp_noBase64
+					...GatsbyContentfulFluid_withWebp
 				}
 				title
 			}
