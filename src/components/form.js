@@ -22,7 +22,7 @@ import {
 
 const ContactForm = () => {
 
-	const { register, errors, formState, handleSubmit, reset, setError } = useForm()
+	const { register, errors, formState, handleSubmit, reset } = useForm()
 
 	const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
 	const PHONE_MASK = `(99) 99999-9999`
@@ -92,7 +92,6 @@ const ContactForm = () => {
 									}
 								})}
 								isInvalid={errors.email}
-								focusBorderColor="teal.500"
 								placeholder="Email"
 								variant="filled"
 								focusBorderColor="teal.500"
@@ -133,7 +132,6 @@ const ContactForm = () => {
 									}
 								})}
 								isInvalid={errors.message}
-								focusBorderColor="teal.500"
 								placeholder="Mensagem"
 								resize="vertical"
 								variant="filled"

@@ -1,6 +1,5 @@
-import { Box, Heading, List, ListItem, Text, Button, Stack, SimpleGrid, PseudoBox } from '@chakra-ui/core'
+import { Box, Heading, List, ListItem, Text, Button, SimpleGrid } from '@chakra-ui/core'
 import { useStaticQuery, graphql } from 'gatsby'
-import Img from 'gatsby-image'
 import React from 'react'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 

@@ -9,10 +9,8 @@ import {
 	Heading,
 	Box,
 	Stack,
-	Button,
-	Icon
+	Button
  } from '@chakra-ui/core'
-import { NavBar } from './nav'
 import Link from '../gatsby-plugin-chakra-ui/components/link';
 
 const NavMobile = (props) => {

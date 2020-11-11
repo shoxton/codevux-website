@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import { useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { throttle } from 'lodash'
 import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex, MenuGroup, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/core'
 import Container from '../gatsby-plugin-chakra-ui/components/container'

@@ -5,7 +5,7 @@
  * See: https://www.gatsbyjs.org/docs/use-static-query/
  */
 
-import React, { useRef, useState, useEffect } from "react"
+import React from "react"
 import PropTypes from "prop-types"
 import "./layout.css"
 import Footer from "./footer"

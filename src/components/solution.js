@@ -1,6 +1,6 @@
 import { Box, Button, Heading, SimpleGrid, Text } from '@chakra-ui/core'
 import * as FaIcons from 'react-icons/fa'
-import { useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 

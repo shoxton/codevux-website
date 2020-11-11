@@ -4,9 +4,9 @@ import Layout from "../components/layout"
 import Hero from "../components/hero"
 import { ServiceList } from "../components/service"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
-import { Section, SectionHeading } from "../components/utils"
+import { Section } from "../components/utils"
 import { SolutionList } from '../components/solution'
-import { Divider, Text, Stack, Heading } from '@chakra-ui/core'
+import { Divider, Stack, Heading } from '@chakra-ui/core'
 
 export default (props) => (
 	<Layout themeColor="dark">
