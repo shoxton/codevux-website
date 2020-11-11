@@ -1,6 +1,6 @@
 import { Box, Button, Heading, SimpleGrid, Text } from '@chakra-ui/core'
 import * as FaIcons from 'react-icons/fa'
-import { useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import React from 'react'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 
@@ -20,14 +20,13 @@ export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 			py={2}
 		>
 			<Link
-				to={slug}
+				to={`/solucoes/${slug}`}
 			>
 				{title}
 			</Link>
 		</Heading>
 		<Text
 			color="gray.300"
-			lineHeight="shorter"
 			pb={2}
 		>
 			{shortDescription}
@@ -41,7 +40,7 @@ export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 			letterSpacing=".25px"
 			size="sm"
 			rightIcon="chevron-right"
-			to={slug}
+			to={`/solucoes/${slug}`}
 		>
 			Saiba mais
 		</Button>

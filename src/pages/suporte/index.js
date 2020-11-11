@@ -17,7 +17,7 @@ export const query = graphql`
 			}
 			heroImage {
 				fluid {
-					...GatsbyContentfulFluid_withWebp_noBase64
+					...GatsbyContentfulFluid_withWebp
 				}
 			}
 			products {

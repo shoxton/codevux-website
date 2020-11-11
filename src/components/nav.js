@@ -1,5 +1,5 @@
 import React, { useLayoutEffect, useRef, useState } from 'react'
-import { useStaticQuery } from 'gatsby'
+import { graphql, useStaticQuery } from 'gatsby'
 import { throttle } from 'lodash'
 import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex, MenuGroup, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/core'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
@@ -176,8 +176,8 @@ export const NavMenu = () => (
 					<MenuItem as={Link} to="/suporte/consultoria">Consultoria</MenuItem>
 				</Box>
 			</MenuGroup>
-			<MenuGroup as={Link} to="/magento" title="Soluções em Magento" />
-			<MenuGroup as={Link} to="/wordpress" title="Soluções em Wordpress" />
+			<MenuGroup as={Link} to="/solucoes/magento" title="Soluções em Magento" />
+			<MenuGroup as={Link} to="/solucoes/wordpress" title="Soluções em Wordpress" />
 		</MenuList>
 	</Menu>
 )

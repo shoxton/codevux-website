@@ -9,10 +9,8 @@ import {
 	Heading,
 	Box,
 	Stack,
-	Button,
-	Icon
+	Button
  } from '@chakra-ui/core'
-import { NavBar } from './nav'
 import Link from '../gatsby-plugin-chakra-ui/components/link';
 
 const NavMobile = (props) => {
@@ -56,10 +54,10 @@ const NavMobile = (props) => {
 						</Stack>
 					</Box>
 					<Box pb={4}>
-						<Link fontWeight="bold" to="/magento">Soluções em Magento </Link>
+						<Link fontWeight="bold" to="/solucoes/magento">Soluções em Magento </Link>
 					</Box>
 					<Box pb={4}>
-						<Link fontWeight="bold" to="/wordpress">Soluções em Wordpress</Link>
+						<Link fontWeight="bold" to="/solucoes/wordpress">Soluções em Wordpress</Link>
 					</Box>
 				</Box>
 				<Button

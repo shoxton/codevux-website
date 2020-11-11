@@ -1,4 +1,4 @@
-import { Box, Divider, Flex, Link, Text } from "@chakra-ui/core"
+import { Box, Divider, Flex, Text } from "@chakra-ui/core"
 import { graphql, StaticQuery } from "gatsby"
 import React from "react"
 import Container from "../gatsby-plugin-chakra-ui/components/container"

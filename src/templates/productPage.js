@@ -7,9 +7,7 @@ import { Perks, Features, ProductList } from "../components/product"
 import SEO from "../components/seo"
 import { CTA, SectionHeading } from "../components/utils"
 import Container from "../gatsby-plugin-chakra-ui/components/container"
-import { graphql, useStaticQuery } from 'gatsby'
 import Layout from '../components/layout'
-import ServiceNav from '../components/serviceNav'
 
 
 export const ProductPage = ({
@@ -37,6 +35,7 @@ export const ProductPage = ({
 			<SEO
 				title={metaTitle}
 				description={description}
+				image={heroImage?.fluid?.src}
 			/>
 			{/* <ServiceNav current={slug} service={service[0]} /> */}
 			<Intro
