@@ -108,7 +108,7 @@ const ContactForm = () => {
 								mask={PHONE_MASK}
 								name="phone"
 								type="tel"
-								ref={register()}
+								ref={register}
 								placeholder="Telefone"
 								variant="filled"
 								isInvalid={errors.phone}
