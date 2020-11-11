@@ -1,11 +1,12 @@
-import React, { useState } from 'react'
+import React from 'react'
+import { useForm } from 'react-hook-form'
+import InputMask from "react-input-mask"
 import {
 	useNetlifyForm,
   NetlifyFormProvider,
   NetlifyFormComponent,
 	Honeypot
 } from 'react-netlify-forms'
-import { useForm } from 'react-hook-form'
 import {
 	Stack,
 	FormControl,
@@ -24,6 +25,7 @@ const ContactForm = () => {
 	const { register, errors, formState, handleSubmit, reset, setError } = useForm()
 
 	const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
+	const PHONE_MASK = `(99) 99999-9999`
 
 	const netlify = useNetlifyForm({
 		name: 'contact-form',
@@ -63,6 +65,7 @@ const ContactForm = () => {
 						<FormControl isInvalid={errors.name}>
 							<Input
 								name="name"
+								type="text"
 								ref={register({required: "Preencha este campo."})}
 								placeholder="Nome"
 								variant="filled"
@@ -80,6 +83,7 @@ const ContactForm = () => {
 						<FormControl isInvalid={errors.email}>
 							<Input
 								name="email"
+								type="email"
 								ref={register({
 									required: "Preencha este campo.",
 									pattern: {
@@ -96,6 +100,25 @@ const ContactForm = () => {
 							/>
 							<FormErrorMessage>
 								{errors.email && errors.email.message}
+							</FormErrorMessage>
+						</FormControl>
+
+						<FormControl isInvalid={errors.phone}>
+							<Input
+								as={InputMask}
+								mask={PHONE_MASK}
+								name="phone"
+								type="tel"
+								ref={register()}
+								placeholder="Telefone"
+								variant="filled"
+								isInvalid={errors.phone}
+								focusBorderColor="teal.500"
+								errorBorderColor="crimson"
+								size="lg"
+							/>
+							<FormErrorMessage>
+								{errors.phone && errors.phone.message}
 							</FormErrorMessage>
 						</FormControl>
 
