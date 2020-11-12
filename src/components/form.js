@@ -1,5 +1,5 @@
 import React from 'react'
-import { useForm } from 'react-hook-form'
+import { useForm, Controller } from 'react-hook-form'
 import InputMask from "react-input-mask"
 import {
 	useNetlifyForm,
@@ -22,7 +22,7 @@ import {
 
 const ContactForm = () => {
 
-	const { register, errors, formState, handleSubmit, reset } = useForm()
+	const { register, errors, formState, handleSubmit, reset, control } = useForm()
 
 	const EMAIL_REGEX = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+.[A-Z]{2,4}$/i
 	const PHONE_MASK = `(99) 99999-9999`
@@ -39,7 +39,7 @@ const ContactForm = () => {
 		}
 	})
 
-  	const onSubmit = (data) => netlify.handleSubmit(null, data)
+	const onSubmit = (data) => netlify.handleSubmit(null, data)
 
 	return(
 		<>
@@ -103,18 +103,22 @@ const ContactForm = () => {
 						</FormControl>
 
 						<FormControl isInvalid={errors.phone}>
-							<Input
-								as={InputMask}
-								mask={PHONE_MASK}
+							<Controller
+								control={control}
 								name="phone"
-								type="tel"
-								ref={register}
-								placeholder="Telefone"
-								variant="filled"
-								isInvalid={errors.phone}
-								focusBorderColor="teal.500"
-								errorBorderColor="crimson"
-								size="lg"
+								as={
+									<Input
+										mask={PHONE_MASK}
+										as={InputMask}
+										placeholder="Telefone"
+										variant="filled"
+										isInvalid={errors.phone}
+										focusBorderColor="teal.500"
+										errorBorderColor="crimson"
+										size="lg"
+									/>
+								}
+								defaultValue="" // Fixes reseting / other issues
 							/>
 							<FormErrorMessage>
 								{errors.phone && errors.phone.message}
