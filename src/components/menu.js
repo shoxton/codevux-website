@@ -18,7 +18,7 @@ const Menu = ({label, href, megamenu, themeColor, ...props}) => {
 	})
 
 	return(
-		<Box ref={megamenuRef} as="li" position="relative" {...props}>
+		<Box ref={megamenuRef} as="li" {...props}>
 			{href ?
 				<Button
 					as={Link}
@@ -52,7 +52,7 @@ const Menu = ({label, href, megamenu, themeColor, ...props}) => {
 					zIndex="dropdown"
 					display={show?'flex':'none' }
 					backgroundColor="white"
-					boxShadow="md"
+					boxShadow="xl"
 					borderRadius="md"
 				>
 					{megamenu.map((section, index) => (
@@ -102,8 +102,8 @@ export const Megamenu = styled.div`
 
   position: absolute;
 	bottom:0;
-	left: 50%;
-	transform: translate(-50%, calc(100% + 1.3rem));
+	right: 0;
+	transform: translateY(calc(100% + 1.05rem));
 	width: 675px;
 	display: flex;
 
