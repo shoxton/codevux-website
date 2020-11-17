@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const menusConfig = require('./config/menuConfig')
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://codevux.com`,
@@ -11,6 +13,7 @@ module.exports = {
     description: `Desenvolvimento de sites, lojas virtuais, blogs e sistemas personalizados. Desenvolvemos soluções que impactam você, seu negócio e seu cliente.`,
 		image: `/images/default-image.png`,
 		twitterUsername: `@codevux`,
+		menus: menusConfig,
     contact: {
       phone: `51999793218`,
       email: `codevux@gmail.com`,
