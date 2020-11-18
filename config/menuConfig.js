@@ -2,11 +2,11 @@ module.exports = [
 	{
 		label: "Serviços e soluções",
 		href: null,
-		megamenu: [
+		dropdown: [
 			{
 				label: "Desenvolvimento Web",
 				href: "/desenvolvimento-web",
-				subMenus: [
+				items: [
 					{
 						label: "Criar site",
 						href: "/desenvolvimento-web/criar-site"
@@ -24,7 +24,7 @@ module.exports = [
 			{
 				label: "Desenvolvimento sob demanda",
 				href: "/desenvolvimento-sob-demanda",
-				subMenus: [
+				items: [
 					{
 						label: "Criar sistema personalizado",
 						href: "/desenvolvimento-sob-demanda/sistema-personalizado"
@@ -46,7 +46,7 @@ module.exports = [
 			{
 				label: "Suporte",
 				href: "/suporte",
-				subMenus: [
+				items: [
 					{
 						label: "Gerenciamento de infraestrutura",
 						href: "/suporte/gerenciamento-de-infraestrutura"
@@ -60,7 +60,7 @@ module.exports = [
 			{
 				label: "Soluções",
 				href: null,
-				subMenus: [
+				items: [
 					{
 						label: "Soluções para Lojas Magento",
 						href: "/solucoes/magento"

@@ -61,10 +61,10 @@ const Nav = ({location, themeColor="light", ...props}) => {
 					title
 					menus {
 						label
-						megamenu {
+						dropdown {
 							href
 							label
-							subMenus {
+							items {
 								href
 								label
 							}
@@ -136,12 +136,10 @@ export const Brand = ({title}) => (
 export const NavBar = ({children, menus, themeColor, ...props}) => (
 	<Stack
 		isInline
-		as="ul"
-		listStyleType="none"
 		spacing={8}
 		{...props}
 	>
-		{menus.map((menu, index) => <Menu themeColor={themeColor} key={`menu-${index}`} {...menu} />)}
+		<Menu menuItems={menus} themeColor={themeColor} />
 		<Button
 			to="/contato"
 			as={Link}
