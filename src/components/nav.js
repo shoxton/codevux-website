@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { throttle } from 'lodash'
 import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex } from '@chakra-ui/core'
@@ -42,14 +42,19 @@ const Nav = ({location, themeColor="light", ...props}) => {
 	}
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [navBg, setNavBg] = useState(false)
 	const navRef = useRef()
-	navRef.current = navBg
+	const { height = 0 } = navRef.current?.getBoundingClientRect() ?? {}
+	const [navBg, setNavBg] = useState(false)
+	const showNavBg = () => setNavBg(window.scrollY > height)
+	const throttledShowNavBg = useCallback(throttle(() => showNavBg(), 300 ), [navBg])
 
-	const invertThemeColor = () => {
-		if(themeColor === "light") return "dark"
-		return "light"
-	}
+	useLayoutEffect(() => {
+		throttledShowNavBg()
+		document.addEventListener('scroll', throttledShowNavBg)
+		return () => {
+			document.removeEventListener('scroll', throttledShowNavBg)
+		}
+	},[navBg])
 
 	const {site:{siteMetadata: {
 		title,
@@ -75,38 +80,42 @@ const Nav = ({location, themeColor="light", ...props}) => {
 		}
 	`)
 
-	useLayoutEffect(() => {
-		const handleScroll = () => {
-			const show = window.scrollY > 120
-			if(navRef.current !== show) {
-				setNavBg(show)
-			}
-		}
-		document.addEventListener('scroll', throttle(handleScroll, 200))
-		return () => {
-			document.removeEventListener('scroll', handleScroll)
-		}
-	})
-
   return (
     <Box
+			ref={navRef}
 			as="nav"
 			width="100%"
 			py={4}
-			bg={navBg ? theme[invertThemeColor()].bg : "transparent"}
+			backgroundColor={navBg ? 'white' : "transparent"}
 			pos="fixed"
 			zIndex="sticky"
-			color={navBg ? theme[invertThemeColor()].color : theme[themeColor].color}
-			borderBottom={navBg ? "1px" : "none"}
-			borderColor={navBg ? theme[invertThemeColor()].borderColor : "none"}
+			color={navBg ? 'gray.700': theme[themeColor].color}
+			borderBottom={navBg ? "1px" : '0'}
+			borderColor={navBg ? "gray.100" : 'transparent'}
+			transition="border-color .2s ease, background-color .2s ease"
     >
 			<Container justify="space-between" align="center">
 				<Brand title={title} />
-				<NavBar menus={menus} themeColor={navBg ? theme[invertThemeColor()] : theme[themeColor]} display={{ base: "none", lg: "flex" }} />
-				<Button size="sm" variant="outline" display={{ base: "block", lg: "none" }}  onClick={onOpen}>
+				<NavBar
+					menus={menus}
+					themeColor={theme[themeColor]}
+					display={{ base: "none", lg: "flex" }}
+				/>
+				<Button
+					size="sm"
+					variant="outline"
+					display={{ base: "block", lg: "none" }}
+					onClick={onOpen}
+				>
 					<Box as={FaBars} />
 				</Button>
-				<NavMobile menus={menus} themeColor={themeColor} isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+				<NavMobile
+					menus={menus}
+					themeColor={themeColor}
+					isOpen={isOpen}
+					onOpen={onOpen}
+					onClose={onClose}
+				/>
 			</Container>
     </Box>
   );
