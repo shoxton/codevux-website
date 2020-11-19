@@ -1,11 +1,12 @@
-import React, { useLayoutEffect, useRef, useState } from 'react'
+import React, { useCallback, useEffect, useLayoutEffect, useRef, useState } from 'react'
 import { graphql, useStaticQuery } from 'gatsby'
 import { throttle } from 'lodash'
-import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex, MenuGroup, Menu, MenuButton, MenuList, MenuItem } from '@chakra-ui/core'
+import { Box, Stack, Heading, Button, useDisclosure, Icon, Flex } from '@chakra-ui/core'
 import Container from '../gatsby-plugin-chakra-ui/components/container'
 import Link from '../gatsby-plugin-chakra-ui/components/link'
 import NavMobile from './navMobile'
 import { FaBars } from 'react-icons/fa'
+import Menu from './menu'
 
 // using https://chakra-ui.com/drawer
 
@@ -16,72 +17,105 @@ const Nav = ({location, themeColor="light", ...props}) => {
 			bg: "white",
 			color: "gray.700",
 			borderColor: "gray.200",
-			menuHover: {
-				bg: "gray.300"
+			state: {
+				hover: {
+					bg: "gray.100"
+				},
+				active: {
+					bg: "gray.200"
+				}
 			}
 		},
 		"dark": {
 			bg: "gray.700",
 			color: "white",
 			borderColor: "gray.500",
-			menuHover: {
-				bg: "gray.100"
+			state: {
+				hover: {
+					bg: "gray.600"
+				},
+				active: {
+					bg: "gray.500"
+				}
 			}
 		}
 	}
 
 	const { isOpen, onOpen, onClose } = useDisclosure();
-	const [navBg, setNavBg] = useState(false)
 	const navRef = useRef()
-	navRef.current = navBg
+	const { height = 0 } = navRef.current?.getBoundingClientRect() ?? {}
+	const [navBg, setNavBg] = useState(false)
+	const showNavBg = () => setNavBg(window.scrollY > height)
+	const throttledShowNavBg = useCallback(throttle(() => showNavBg(), 300 ), [navBg])
 
-	const invertThemeColor = () => {
-		if(themeColor === "light") return "dark"
-		return "light"
-	}
+	useLayoutEffect(() => {
+		throttledShowNavBg()
+		document.addEventListener('scroll', throttledShowNavBg)
+		return () => {
+			document.removeEventListener('scroll', throttledShowNavBg)
+		}
+	},[navBg])
 
-	const data = useStaticQuery(graphql`
+	const {site:{siteMetadata: {
+		title,
+		menus
+	}}} = useStaticQuery(graphql`
 		query HeaderQuery {
 			site {
 				siteMetadata {
 					title
+					menus {
+						label
+						dropdown {
+							href
+							label
+							items {
+								href
+								label
+							}
+						}
+					}
 				}
 			}
 		}
 	`)
 
-	useLayoutEffect(() => {
-		const handleScroll = () => {
-			const show = window.scrollY > 120
-			if(navRef.current !== show) {
-				setNavBg(show)
-			}
-		}
-		document.addEventListener('scroll', throttle(handleScroll, 200))
-		return () => {
-			document.removeEventListener('scroll', handleScroll)
-		}
-	})
-
   return (
     <Box
+			ref={navRef}
 			as="nav"
 			width="100%"
 			py={4}
-			bg={navBg ? theme[invertThemeColor()].bg : "transparent"}
+			backgroundColor={navBg ? 'white' : "transparent"}
 			pos="fixed"
 			zIndex="sticky"
-			color={navBg ? theme[invertThemeColor()].color : theme[themeColor].color}
-			borderBottom={navBg ? "1px" : "none"}
-			borderColor={navBg ? theme[invertThemeColor()].borderColor : "none"}
+			color={navBg ? 'gray.700': theme[themeColor].color}
+			borderBottom={navBg ? "1px" : '0'}
+			borderColor={navBg ? "gray.100" : 'transparent'}
+			transition="border-color .2s ease, background-color .2s ease"
     >
 			<Container justify="space-between" align="center">
-				<Brand title={data.site.siteMetadata.title} />
-				<NavBar display={{ base: "none", lg: "flex" }} />
-				<Button size="sm" variant="outline" display={{ base: "block", lg: "none" }}  onClick={onOpen}>
+				<Brand title={title} />
+				<NavBar
+					menus={menus}
+					themeColor={theme[themeColor]}
+					display={{ base: "none", lg: "flex" }}
+				/>
+				<Button
+					size="sm"
+					variant="outline"
+					display={{ base: "block", lg: "none" }}
+					onClick={onOpen}
+				>
 					<Box as={FaBars} />
 				</Button>
-				<NavMobile isOpen={isOpen} onOpen={onOpen} onClose={onClose} />
+				<NavMobile
+					menus={menus}
+					themeColor={themeColor}
+					isOpen={isOpen}
+					onOpen={onOpen}
+					onClose={onClose}
+				/>
 			</Container>
     </Box>
   );
@@ -108,12 +142,13 @@ export const Brand = ({title}) => (
 	</Link>
 )
 
-export const NavBar = ({children, ...props}) => (
+export const NavBar = ({children, menus, themeColor, ...props}) => (
 	<Stack
 		isInline
+		spacing={8}
 		{...props}
 	>
-		<NavMenu />
+		<Menu menuItems={menus} themeColor={themeColor} />
 		<Button
 			to="/contato"
 			as={Link}
@@ -124,62 +159,6 @@ export const NavBar = ({children, ...props}) => (
 			Fale conosco
 		</Button>
 	</Stack>
-)
-
-export const NavMenu = () => (
-	<Menu>
-		<MenuButton
-			as={Button} size="sm"
-			variant="ghost"
-			variantColor="gray.700"
-			rightIcon="chevron-down"
-			mr={8}
-		>
-			Serviços e soluções
-		</MenuButton>
-		<MenuList
-			color="gray.700"
-			py={4}
-			px={2}
-			placement="bottom-end"
-		>
-			<MenuGroup
-				as={Link}
-				to="/desenvolvimento-web"
-				title="Desenvolvimento Web"
-			>
-				<Box borderLeft="1px" borderLeftColor="gray.300" mx={4} mb={4} >
-					<MenuItem as={Link} to="/desenvolvimento-web/criar-site">Criar Site</MenuItem>
-					<MenuItem as={Link} to="/desenvolvimento-web/criar-loja-virtual">Criar Loja virtual</MenuItem>
-					<MenuItem as={Link} to="/desenvolvimento-web/criar-blog">Criar Blog</MenuItem>
-				</Box>
-			</MenuGroup>
-			<MenuGroup
-				as={Link}
-				to="/desenvolvimento-sob-demanda"
-				title="Desenvolvimento sob demanda"
-			>
-				<Box borderLeft="1px" borderLeftColor="gray.300" mx={4} mb={4} >
-					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/sistema-personalizado">Criar Sistema Personalizado</MenuItem>
-					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/integrar-marketplaces">Integrar Marketplaces</MenuItem>
-					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/integrar-meios-de-pagamento">Integrar Meios de pagamento</MenuItem>
-					<MenuItem as={Link} to="/desenvolvimento-sob-demanda/integrar-transportadoras">Integrar Transportadoras</MenuItem>
-				</Box>
-			</MenuGroup>
-			<MenuGroup
-				as={Link}
-				to="/suporte"
-				title="Suporte"
-			>
-				<Box borderLeft="1px" borderLeftColor="gray.300" mx={4} mb={4} >
-					<MenuItem as={Link} to="/suporte/gerenciamento-de-infraestrutura">Gerenciamento de infraestrutura</MenuItem>
-					<MenuItem as={Link} to="/suporte/consultoria">Consultoria</MenuItem>
-				</Box>
-			</MenuGroup>
-			<MenuGroup as={Link} to="/solucoes/magento" title="Soluções em Magento" />
-			<MenuGroup as={Link} to="/solucoes/wordpress" title="Soluções em Wordpress" />
-		</MenuList>
-	</Menu>
 )
 
 export default Nav

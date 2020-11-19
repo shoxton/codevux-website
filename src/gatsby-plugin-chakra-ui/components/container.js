@@ -8,6 +8,7 @@ const Container = ({children, ...props}) => (
 		maxWidth={{sm: 'lg', md: 'xl', lg: '3xl', xl: '5xl'}}
 		px={[4,2]}
 		mx="auto"
+		position="relative"
 		{...props}
 	>
 		{children}

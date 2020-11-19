@@ -2,6 +2,8 @@ require("dotenv").config({
   path: `.env.${process.env.NODE_ENV}`,
 })
 
+const menusConfig = require('./config/menuConfig')
+
 module.exports = {
   siteMetadata: {
     siteUrl: `https://codevux.com`,
@@ -11,6 +13,7 @@ module.exports = {
     description: `Desenvolvimento de sites, lojas virtuais, blogs e sistemas personalizados. Desenvolvemos soluções que impactam você, seu negócio e seu cliente.`,
 		image: `/images/default-image.png`,
 		twitterUsername: `@codevux`,
+		menus: menusConfig,
     contact: {
       phone: `51999793218`,
       email: `codevux@gmail.com`,
@@ -46,18 +49,13 @@ module.exports = {
     },
     "gatsby-plugin-chakra-ui",
     {
-      resolve: `gatsby-plugin-prefetch-google-fonts`,
+      resolve: `gatsby-plugin-google-fonts`,
       options: {
         fonts: [
-          {
-            family: `Montserrat`,
-            variants: [`200`, `400`, `500`, `700`, `800`],
-          },
-          {
-            family: `Open Sans`,
-            variants: [`400`, `700`],
-          },
-        ],
+					`montserrat\:400,500,700,800`,
+					`open sans\:400,700`
+				],
+				display: `swap`
       },
     },
     {
