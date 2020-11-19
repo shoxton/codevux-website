@@ -10,9 +10,7 @@ import { Divider, Stack, Heading } from '@chakra-ui/core'
 
 export default (props) => (
 	<Layout themeColor="dark">
-		<SEO
-			title="Codevux | Desenvolvimento Web"
-		/>
+		<SEO />
 		<Hero />
 		<Container>
 			<Section pt="0!important" mt="-12vh">
