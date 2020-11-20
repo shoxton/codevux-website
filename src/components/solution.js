@@ -13,7 +13,7 @@ export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 	>
 		<Box as={FaIcons[icon]} size="2.5rem" color="#fff" />
 		<Heading
-			as="h4"
+			as="h3"
 			fontSize={{base: 'xl', lg: '2xl'}}
 			fontWeight="medium"
 			color="white"
@@ -28,6 +28,7 @@ export const SolutionItem = ({title, icon, slug, shortDescription}) => (
 		<Text
 			color="gray.300"
 			pb={2}
+			fontSize={{base: 'md', lg: 'lg'}}
 		>
 			{shortDescription}
 		</Text>

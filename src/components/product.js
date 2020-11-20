@@ -16,7 +16,7 @@ const ProductItem = ({context, title, slug, shortDescription, hasLandingPage, ..
 					{hasLandingPage &&
 					<Link to={`/${context}/${slug}`}>
 						<Heading
-							as="h2"
+							as="h3"
 							fontSize="2xl"
 							fontWeight="medium"
 							color="gray.700"
@@ -42,6 +42,7 @@ const ProductItem = ({context, title, slug, shortDescription, hasLandingPage, ..
 				<Text
 					mb={2}
 					color="gray.600"
+					fontSize={{base: 'md', lg: 'lg'}}
 				>
 				{shortDescription}
 				</Text>

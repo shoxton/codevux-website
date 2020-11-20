@@ -17,7 +17,7 @@ export default (props) => (
 				<Stack mb={4} align="center" isInline>
 						<Heading
 							fontSize="md"
-							as="p"
+							as="h2"
 							fontWeight="medium"
 							color="gray.400"
 							textTransform="uppercase"
@@ -33,7 +33,7 @@ export default (props) => (
 				<Stack mb={4} align="center" isInline>
 					<Heading
 						fontSize="md"
-						as="p"
+						as="h2"
 						fontWeight="medium"
 						color="gray.500"
 						textTransform="uppercase"
