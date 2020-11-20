@@ -98,7 +98,7 @@ const Nav = ({location, themeColor="light", ...props}) => {
 				<Brand title={title} />
 				<NavBar
 					menus={menus}
-					themeColor={theme[themeColor]}
+					themeColor={navBg ? theme['light'] : theme[themeColor]}
 					display={{ base: "none", lg: "flex" }}
 				/>
 				<Button
