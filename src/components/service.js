@@ -16,7 +16,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 			{...props}
 		>
 			<Heading
-				as="h2"
+				as="h3"
 				fontSize={{base: 'xl', lg: '2xl'}}
 				fontWeight="medium"
 				pb={2}
@@ -30,6 +30,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 			</Heading>
 			<Text
 				pb={2}
+				fontSize={{base: 'md', lg: 'lg'}}
 				color="gray.600"
 			>
 				{shortDescription}
@@ -43,7 +44,7 @@ const ServiceItem = ({reversed, title, shortDescription, slug, products, ...prop
 				{
 					products?.map((product, index) => (
 						<ListItem
-							as="h4"
+							as="h3"
 							key={`${product.slug}-${index}`}
 						>
 							{product.hasLandingPage &&
